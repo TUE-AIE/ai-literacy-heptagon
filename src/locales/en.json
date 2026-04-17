@@ -1,0 +1,202 @@
+{
+  "app": {
+    "kicker": "TU/e · Library & Information Services · AI Enablement Program",
+    "title.line1": "The AI Literacy",
+    "title.line2": "Heptagon.",
+    "lede": "Seven dimensions, four levels, one figure — a self-assessment instrument for LIS, rendered as an interactive publication plate.",
+    "stamp": "Draft · v0.1 · 2026-04-17",
+    "replay": "Replay reveal",
+    "languageToggle.aria": "Change language",
+    "back": "Back",
+    "next": "Next",
+    "startOver": "Start over",
+    "continue": "Continue"
+  },
+  "landing": {
+    "heading": "Where does AI literacy stand, here, today?",
+    "body": "Complete a short self-assessment against the seven dimensions to produce a profile. Share the file with your team lead or keep it private — nothing leaves your browser unless you export it.",
+    "cta.individual": "Assess myself",
+    "cta.team": "Assess my team",
+    "cta.resume": "Resume draft",
+    "cta.aggregator": "Open aggregator",
+    "notes": {
+      "time.title": "Time",
+      "time.body": "Ten minutes. Honest beats complete — pick the anchor that sounds most like you right now.",
+      "privacy.title": "Privacy",
+      "privacy.body": "No accounts, no tracking, no server. Your answers live in this browser tab until you choose to download them.",
+      "export.title": "What you get out",
+      "export.body": "A JSON file you can keep or share, and a typeset PNG of the heptagon plate for reports and slides."
+    }
+  },
+  "citation": {
+    "label": "Based on",
+    "body": "<strong>Hackl, V., Müller, A. E., & Sailer, M.</strong> (2025). <em>The AI Literacy Heptagon: A Structured Approach to AI Literacy in Higher Education.</em>",
+    "venue": "arXiv preprint 2509.18900 [cs.CY], University of Passau.",
+    "linkLabel": "Read the paper (arXiv)",
+    "note": "The seven dimensions, four Bloom-aligned levels, and the baseline concept used here are adopted directly from the paper's Heptagon framework (Figure 3, Table 3). This tool is an implementation aid built by the TU/e LIS AI Literacy Team; it is not affiliated with the authors."
+  },
+  "scope": {
+    "individual.title": "About you",
+    "individual.body": "Optional. The name is kept only on the exported file; the rest helps the aggregator place your profile in the org.",
+    "team.title": "About the team",
+    "team.body": "A team profile is either filled by the lead on behalf of the team, or computed later by importing individual exports in the aggregator.",
+    "field.name": "Name",
+    "field.name.placeholder.individual": "Your name (optional)",
+    "field.name.placeholder.team": "Team name",
+    "field.role": "Role",
+    "field.role.placeholder": "e.g. Information Specialist",
+    "field.productArea": "Product Area",
+    "field.productArea.placeholder": "Select…",
+    "field.team": "Team",
+    "field.team.placeholder": "Select…",
+    "field.participantCount": "Number of participants",
+    "begin": "Begin assessment"
+  },
+  "assess": {
+    "progress": "Dimension {{current}} of {{total}}",
+    "question": "Which statement best describes the current level for <em>{{dimension}}</em>?",
+    "evidence.label": "Evidence (optional)",
+    "evidence.placeholder": "What are you thinking of? One line is enough.",
+    "previous": "Previous",
+    "next": "Next dimension",
+    "review": "Review & finish"
+  },
+  "results": {
+    "heading": "Your profile",
+    "body": "Below is the heptagon you just described. Dimensions that sit inside the terracotta baseline band are below the Beginner level LIS expects from every staff member.",
+    "dimensionCard.level": "Level {{n}} — {{name}}",
+    "export.json": "Download JSON",
+    "export.png": "Download PNG plate",
+    "startOver": "Start a new assessment"
+  },
+  "aggregator": {
+    "kicker": "TU/e · LIS · AI Literacy Aggregator",
+    "title.line1": "Aggregated",
+    "title.line2": "literacy.",
+    "lede": "Drop in the JSON profiles your team has exported. Everything is computed in your browser — no profile ever leaves this tab.",
+    "drop.prompt": "Drop JSON profiles here",
+    "drop.or": "or",
+    "drop.pick": "select files",
+    "drop.hint": "One or more heptagon JSON exports. Files that don't match the schema are flagged and skipped.",
+    "import.added": "{{count}} profile added",
+    "import.added_plural": "{{count}} profiles added",
+    "import.skipped": "{{count}} file skipped ({{reason}})",
+    "import.skipped_plural": "{{count}} files skipped ({{reason}})",
+    "clear": "Clear all",
+    "level.root": "LIS",
+    "level.pa": "Product Area",
+    "level.team": "Team",
+    "level.individual": "Individual",
+    "summary.one": "{{count}} profile",
+    "summary.many": "{{count}} profiles across {{groups}}",
+    "card.profilesOne":  "{{count}} profile",
+    "card.profilesMany": "{{count}} profiles",
+    "card.teamsOne":     "{{count}} team",
+    "card.teamsMany":    "{{count}} teams",
+    "card.profilesAcrossTeamsOne":  "{{profiles}} profiles · {{teams}} team",
+    "card.profilesAcrossTeamsMany": "{{profiles}} profiles · {{teams}} teams",
+    "aggregate.mean": "Mean profile",
+    "aggregate.minmax": "Min–max band",
+    "aggregate.below": "{{count}} dimension below baseline",
+    "aggregate.below_plural": "{{count}} dimensions below baseline",
+    "children.pa": "Product Areas",
+    "children.team": "Teams",
+    "children.individual": "Individuals",
+    "children.empty": "No profiles at this level yet.",
+    "privacy.redacted": "Profiles hidden for privacy (need ≥ {{min}}).",
+    "privacy.showIndividuals": "Show individual profiles",
+    "privacy.hideIndividuals": "Hide individual profiles",
+    "back": "Back to assessment",
+    "drilldownHint": "Click a card to drill down.",
+    "validation.heading": "Files skipped",
+    "validation.close": "Dismiss",
+    "mode.drill": "Drill",
+    "mode.compare": "Compare",
+    "mode.diff": "Show deltas",
+    "compare.hint": "Click up to three cards to overlay them.",
+    "compare.clear": "Clear selection",
+    "compare.legendTitle": "Overlay",
+    "compare.tooFew": "Select at least two cards to compare.",
+    "diff.legend": "Deltas vs Beginner baseline",
+    "diff.positive": "Above baseline",
+    "diff.negative": "Below baseline",
+    "diff.zero":     "At baseline"
+  },
+  "figure": {
+    "caption.title": "Figure 1 — Profile of the <em>Information Literacy & Education</em> team.",
+    "caption.meta": "LIS / Library & Open Science / 2026-04-17"
+  },
+  "margin": {
+    "reading.title": "Reading the plate",
+    "reading.body": "Seven axes, one per dimension. Four concentric rings: <em>Unaware</em>, <em>Beginner</em>, <em>Intermediate</em>, <em>Expert</em>. The terracotta band marks the Beginner baseline expected of every LIS member.",
+    "profile.title": "The profile",
+    "profile.body": "The red polygon is the team's current self-assessment. Where a vertex dips below the terracotta band, the dimension is below baseline — the marginalia on the plate calls it out.",
+    "interaction.title": "Interaction",
+    "interaction.body": "Hover any vertex for the Bloom-aligned anchor text. Export as JSON or a typeset PNG plate."
+  },
+  "levels": {
+    "unaware":      "Unaware",
+    "beginner":     "Beginner",
+    "intermediate": "Intermediate",
+    "expert":       "Expert"
+  },
+  "dimensions": {
+    "technical":        { "short": "Technical",          "full": "Technical Knowledge and Skills" },
+    "application":      { "short": "Application",        "full": "Application Proficiency" },
+    "integration":      { "short": "Integration",        "full": "Integration Skills" },
+    "legal":            { "short": "Legal",              "full": "Legal and Regulatory Knowledge" },
+    "socialImpact":     { "short": "Social Impact",      "full": "Social Impact Understanding" },
+    "ethical":          { "short": "Ethical",            "full": "Ethical Awareness and Reasoning" },
+    "criticalThinking": { "short": "Critical Thinking",  "full": "Critical Thinking Ability" }
+  },
+  "anchors": {
+    "technical": {
+      "unaware":      "No awareness of AI systems.",
+      "beginner":     "Identifies and explains basic principles, functions, and mechanisms of AI systems.",
+      "intermediate": "Applies and analyzes AI algorithms and data processing techniques in practical scenarios.",
+      "expert":       "Evaluates, develops, and optimizes advanced AI solutions and computational processes."
+    },
+    "application": {
+      "unaware":      "Does not utilize AI tools.",
+      "beginner":     "Recognizes and describes basic AI applications.",
+      "intermediate": "Implements and adapts AI technologies to solve practical problems effectively.",
+      "expert":       "Critically evaluates and strategically designs innovative AI applications."
+    },
+    "criticalThinking": {
+      "unaware":      "Not aware of AI implications or limitations.",
+      "beginner":     "Recognizes and explains basic capabilities and limitations of AI systems.",
+      "intermediate": "Analyzes and critically assesses AI suitability for specific contexts.",
+      "expert":       "Thoroughly evaluates AI systems and proposes advanced solutions to emerging issues."
+    },
+    "integration": {
+      "unaware":      "No ability to incorporate AI technologies into personal or professional digital environments.",
+      "beginner":     "Recognizes and describes basic opportunities for integrating AI solutions across various contexts.",
+      "intermediate": "Implements and analyzes integration strategies, adapts AI solutions to different contexts, and responds to technological change.",
+      "expert":       "Evaluates complex integration scenarios, designs innovative AI integrations, and develops adaptive strategies for incorporating new AI developments."
+    },
+    "legal": {
+      "unaware":      "No awareness of legal frameworks concerning AI.",
+      "beginner":     "Recalls and understands fundamental legal and regulatory frameworks governing AI.",
+      "intermediate": "Applies and analyzes regulatory implications in specific AI scenarios.",
+      "expert":       "Evaluates legal risks comprehensively and designs guidelines compliant with evolving AI regulations."
+    },
+    "ethical": {
+      "unaware":      "Not aware of ethical implications related to AI.",
+      "beginner":     "Recognizes and explains ethical principles relevant to AI.",
+      "intermediate": "Applies ethical principles and analyzes ethical implications in specific AI scenarios.",
+      "expert":       "Evaluates complex ethical challenges and formulates standards for ethical AI development and use."
+    },
+    "socialImpact": {
+      "unaware":      "Not aware of societal impacts of AI technologies.",
+      "beginner":     "Recognizes and explains basic social impacts of AI on human interaction and work environments.",
+      "intermediate": "Assesses and analyzes how AI technologies influence society and social structures.",
+      "expert":       "Evaluates complex societal impacts, anticipates future consequences, and develops strategies for responsible AI integration."
+    }
+  },
+  "heptagon": {
+    "title": "AI Literacy Profile",
+    "desc.intro": "A radar-like figure with seven axes. Profile levels:",
+    "desc.below":  "(below baseline)",
+    "gap.marginalia": "Below baseline — gap."
+  }
+}

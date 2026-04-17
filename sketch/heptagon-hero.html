@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI Literacy Heptagon — Plate Hero (sketch)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  :root{
+    --ink:         #14121A;
+    --paper:       #F2EDE3;
+    --paper-shade: #E6DECC;
+    --baseline:    #C04A2A;
+    --profile:     #C8102E;
+    --gap-marker:  #8A6A1E;
+    --annotation:  #5B4F3A;
+  }
+  *,*::before,*::after { box-sizing: border-box; }
+  html,body { margin:0; padding:0; min-height:100%; background: var(--paper); color: var(--ink);
+              font-family:'Geist', system-ui, sans-serif; font-weight:400; }
+
+  /* paper grain — single filter applied as a multiply overlay */
+  body::after {
+    content:""; position:fixed; inset:0; z-index:10; pointer-events:none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0 0.10  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+    opacity:.08; mix-blend-mode: multiply;
+  }
+
+  /* 7-column page grid (echoes the heptagon) */
+  .page {
+    position:relative; z-index:2;
+    max-width: 1280px; margin: 0 auto;
+    padding: 56px 72px 120px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    column-gap: 28px;
+  }
+  header        { grid-column: 1 / -1; margin-bottom: 40px; }
+  .plate-wrap   { grid-column: 1 / span 5; }
+  .margin       { grid-column: 6 / span 2; padding-top: 12px; }
+
+  /* Hanging title, left margin overhang like a printed book */
+  .kicker {
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10.5px; letter-spacing: .20em; text-transform: uppercase;
+    color: var(--annotation); margin: 0 0 18px 0;
+  }
+  .kicker .dot { color: var(--baseline); margin: 0 6px; }
+  h1 {
+    font-family:'Fraunces', serif;
+    font-variation-settings: 'opsz' 144, 'SOFT' 40;
+    font-weight: 360;
+    font-size: clamp(44px, 6.4vw, 84px);
+    line-height: .98; letter-spacing: -.018em;
+    margin: 0 0 14px -56px;    /* hangs into the left margin */
+    color: var(--ink);
+  }
+  h1 em {
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'SOFT' 80;
+    color: var(--baseline);
+  }
+  .lede {
+    font-family:'Fraunces', serif; font-style: italic;
+    font-variation-settings:'opsz' 22, 'SOFT' 60;
+    font-size: 20px; line-height: 1.48;
+    color: var(--annotation);
+    max-width: 58ch; margin: 0;
+  }
+
+  /* The plate itself — double hairline rule like a printed figure */
+  figure.plate {
+    position: relative;
+    margin: 0; padding: 28px 28px 22px;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    outline: 0.5px solid var(--ink);
+    outline-offset: 7px;
+  }
+  figure.plate::before {
+    /* faint inside ruling */
+    content:""; position:absolute; inset:12px;
+    border: 0.5px solid rgba(20,18,26,.18); pointer-events:none;
+  }
+  figcaption {
+    display:flex; justify-content: space-between; gap: 24px;
+    margin-top: 18px; padding-top: 14px;
+    border-top: 0.5px solid var(--annotation);
+    font-family:'Fraunces', serif; font-style: italic;
+    font-variation-settings:'opsz' 14;
+    font-size: 14.5px; color: var(--annotation);
+  }
+  figcaption .meta {
+    font-family:'JetBrains Mono', monospace; font-style: normal;
+    font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--ink); opacity:.72; white-space: nowrap;
+  }
+
+  /* Library-card style stamp */
+  .stamp {
+    position:absolute; top: 22px; right: 22px;
+    transform: rotate(-4.5deg);
+    padding: 6px 10px;
+    border: 1.3px solid var(--baseline);
+    color: var(--baseline);
+    font-family:'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase;
+    mix-blend-mode: multiply;
+    opacity: 0;            /* revealed by JS */
+    pointer-events: none;
+  }
+
+  /* Marginalia (right column) */
+  aside.margin h3 {
+    font-family:'JetBrains Mono', monospace; font-weight:500;
+    font-size: 10.5px; letter-spacing: .20em; text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+  }
+  aside.margin p {
+    font-family:'Fraunces', serif; font-style: italic;
+    font-variation-settings:'opsz' 15;
+    font-size: 15px; line-height: 1.55;
+    color: var(--annotation);
+    margin: 0 0 22px 0;
+  }
+  aside.margin .rule {
+    height: 0; border:none; border-top: 0.5px solid var(--annotation);
+    margin: 0 0 22px 0;
+  }
+
+  /* Replay control */
+  .replay {
+    position: fixed; right: 28px; bottom: 24px; z-index: 20;
+    background: var(--ink); color: var(--paper);
+    border: none; padding: 10px 14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase;
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease;
+  }
+  .replay:hover { background: var(--baseline); transform: translateY(-1px); }
+
+  /* SVG heptagon styling */
+  svg.hept .ring   { fill:none; stroke: var(--ink); stroke-width: .5; opacity: .75; }
+  svg.hept .axis   { stroke: var(--ink); stroke-width: .5; opacity: .8; }
+  svg.hept .baseline-band { fill: var(--baseline); opacity: 0; }
+  svg.hept text.axis-label {
+    font-family:'Fraunces', serif;
+    font-variation-settings:'opsz' 16;
+    font-size: 12.5px; letter-spacing: .22em; text-transform: uppercase;
+    fill: var(--ink); font-weight: 480;
+  }
+  svg.hept text.axis-code {
+    font-family:'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: .08em;
+    fill: var(--annotation);
+  }
+  svg.hept text.level-label {
+    font-family:'JetBrains Mono', monospace;
+    font-size: 8.5px; letter-spacing: .12em; text-transform: uppercase;
+    fill: var(--annotation); opacity: .75;
+  }
+  svg.hept .profile         { fill: var(--profile); fill-opacity: .14; stroke: var(--profile); stroke-width: 1.35; }
+  svg.hept .profile-bleed   { fill: var(--profile); fill-opacity: .18; }
+  svg.hept .vertex          { fill: var(--profile); stroke: var(--paper); stroke-width: 1.2; }
+  svg.hept .vertex-gap      { fill: var(--gap-marker); stroke: var(--paper); stroke-width: 1.2; }
+  svg.hept .leader          { stroke: var(--annotation); stroke-width: .5; fill:none; stroke-dasharray: 2 2.5; }
+  svg.hept text.marginalia-svg {
+    font-family:'Fraunces', serif; font-style: italic;
+    font-variation-settings:'opsz' 14;
+    font-size: 13.5px; fill: var(--annotation);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    svg.hept * { animation: none !important; transition: none !important; }
+  }
+
+  @media (max-width: 900px) {
+    .page { grid-template-columns: 1fr; padding: 32px 24px 96px; }
+    .plate-wrap, .margin { grid-column: 1; }
+    h1 { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<main class="page">
+  <header>
+    <p class="kicker">TU/e<span class="dot">·</span>Library &amp; Information Services<span class="dot">·</span>AI Enablement Program</p>
+    <h1>The AI&nbsp;Literacy<br><em>Heptagon.</em></h1>
+    <p class="lede">Seven dimensions, four levels, one figure — a self-assessment instrument for LIS, rendered as an interactive publication plate.</p>
+  </header>
+
+  <div class="plate-wrap">
+    <figure class="plate">
+      <div class="stamp" id="stamp">Draft · v0.1 · 2026-04-16</div>
+      <svg class="hept" viewBox="0 0 760 780" preserveAspectRatio="xMidYMid meet" role="img"
+           aria-labelledby="hept-title hept-desc" width="100%">
+        <title id="hept-title">AI Literacy Profile — Information Literacy and Education team</title>
+        <desc id="hept-desc">Technical: Beginner. Application: Intermediate. Integration: Intermediate.
+        Legal: Unaware (below baseline). Social Impact: Intermediate. Ethical: Intermediate. Critical Thinking: Intermediate.</desc>
+        <defs>
+          <filter id="bleed" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2.4"/>
+          </filter>
+        </defs>
+        <g id="scene"></g>
+      </svg>
+      <figcaption>
+        <span>Figure 1 &mdash; Profile of the <em>Information Literacy &amp; Education</em> team.</span>
+        <span class="meta">LIS / Library &amp; Open Science / 2026-04-16</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <aside class="margin">
+    <h3>Reading the plate</h3>
+    <p>Seven axes, one per dimension. Four concentric rings: <em>Unaware</em>, <em>Beginner</em>, <em>Intermediate</em>, <em>Expert</em>. The terracotta band marks the Beginner baseline expected of every LIS member.</p>
+    <hr class="rule">
+    <h3>The profile</h3>
+    <p>The red polygon is the team's current self-assessment. Where a vertex dips below the terracotta band, the dimension is below baseline &mdash; the marginalia on the plate calls it out.</p>
+    <hr class="rule">
+    <h3>Interaction (v1)</h3>
+    <p>Hover any vertex for the Bloom-aligned anchor text. Click to jump to that dimension in the assessment. Export as JSON or a typeset PNG plate.</p>
+  </aside>
+</main>
+
+<button class="replay" id="replay">Replay reveal</button>
+
+<script>
+/* ----------------------------------------------------------------
+   Heptagon plate — reveal choreography
+   Sequence (total ≈ 4.4s):
+     200–900ms    axes draw from centre outward (stagger 60ms)
+     900–1700ms   four rings draw inside-out (stagger 140ms)
+    1400–1900ms   level labels fade in on the vertical axis
+    1600–2100ms   dimension labels typeset in sequence
+    1700–2500ms   baseline band ink-washes in
+    2400–3300ms   profile polygon draws; bleed shadow eases behind
+    2600–3100ms   vertex dots pop
+    3200–3800ms   below-baseline marginalia: leader line, then note
+    3800–4400ms   library-card stamp overprints
+----------------------------------------------------------------- */
+
+const root = d3.select("#scene");
+const svgEl = document.querySelector("svg.hept");
+
+const W = 760, H = 780;
+const cx = 380, cy = 400, R = 260;
+const N = 7;
+
+const dims = [
+  { code:"TKS", label:"Technical",         level:1 },
+  { code:"AP",  label:"Application",       level:2 },
+  { code:"IS",  label:"Integration",       level:2 },
+  { code:"LRK", label:"Legal",             level:0 },  // the gap — below baseline
+  { code:"SIU", label:"Social Impact",     level:2 },
+  { code:"EAR", label:"Ethical",           level:2 },
+  { code:"CTA", label:"Critical Thinking", level:2 }
+];
+const levelNames = ["Unaware","Beginner","Intermediate","Expert"];
+
+const angle = i => -Math.PI/2 + i * 2*Math.PI/N;
+const pt = (i, r) => [cx + Math.cos(angle(i))*r, cy + Math.sin(angle(i))*r];
+const ringR = k => R * k / 4;                 // k=0..4, baseline ring = 1
+const heptPoints = k => d3.range(N).map(i => pt(i, ringR(k)));
+const polyStr = pts => pts.map(p => p.map(v => v.toFixed(2)).join(",")).join(" ");
+
+function draw() {
+  root.selectAll("*").remove();
+  d3.select("#stamp").style("opacity", 0);
+
+  /* 1 — axes unfurl from centre */
+  root.selectAll(".axis")
+    .data(d3.range(N)).enter().append("line")
+    .attr("class","axis")
+    .attr("x1", cx).attr("y1", cy)
+    .attr("x2", cx).attr("y2", cy)
+    .transition().delay((d,i)=>200 + i*60).duration(680).ease(d3.easeCubicOut)
+    .attr("x2", (d,i)=>pt(i, R+6)[0])
+    .attr("y2", (d,i)=>pt(i, R+6)[1]);
+
+  /* 2 — rings draw inside-out */
+  [1,2,3,4].forEach(k => {
+    const target = heptPoints(k);
+    const seed = target.map(()=>[cx,cy]);
+    root.append("polygon")
+      .attr("class","ring")
+      .attr("points", polyStr(seed))
+      .transition().delay(900 + (k-1)*140).duration(460).ease(d3.easeCubicOut)
+      .attrTween("points", function() {
+        const interp = d3.interpolateArray(seed.flat(), target.flat());
+        return t => {
+          const arr = interp(t);
+          let s = "";
+          for (let i=0;i<arr.length;i+=2) s += arr[i].toFixed(2)+","+arr[i+1].toFixed(2)+" ";
+          return s.trim();
+        };
+      });
+  });
+
+  /* 3 — level labels on the vertical axis (top) */
+  root.selectAll(".level-label")
+    .data(levelNames).enter().append("text")
+    .attr("class","level-label")
+    .attr("x", cx + 6)
+    .attr("y", (d,i) => cy - ringR(i+1) + 3)
+    .attr("opacity", 0)
+    .text(d => d)
+    .transition().delay((d,i)=>1400 + i*80).duration(320)
+    .attr("opacity", .75);
+
+  /* 4 — dimension labels typeset outward, staggered */
+  dims.forEach((d, i) => {
+    const [x,y] = pt(i, R + 42);
+    const cos = Math.cos(angle(i));
+    const anchor = cos >  0.15 ? "start"
+                : cos < -0.15 ? "end"
+                :              "middle";
+    // small caps label
+    const label = root.append("text")
+      .attr("class","axis-label")
+      .attr("text-anchor", anchor)
+      .attr("x", x).attr("y", y)
+      .attr("transform", "translate(0,-4)")
+      .attr("opacity", 0)
+      .text(d.label);
+    label.transition().delay(1600 + i*55).duration(420).ease(d3.easeCubicOut)
+      .attr("transform", "translate(0,0)").attr("opacity", 1);
+
+    const code = root.append("text")
+      .attr("class","axis-code")
+      .attr("text-anchor", anchor)
+      .attr("x", x).attr("y", y + 14)
+      .attr("transform", "translate(0,-4)")
+      .attr("opacity", 0)
+      .text(d.code);
+    code.transition().delay(1680 + i*55).duration(420).ease(d3.easeCubicOut)
+      .attr("transform", "translate(0,0)").attr("opacity", 1);
+  });
+
+  /* 5 — baseline band: ring 1 filled terracotta, with a centre cutout (ring 0 = point, so just ring 1 fill) */
+  /* The baseline band = area between centre and Beginner ring, i.e. the innermost heptagon.
+     Per the paper, Beginner is the *ring*; we wash the area enclosed by ring 1. */
+  root.append("polygon")
+    .attr("class","baseline-band")
+    .attr("points", polyStr(heptPoints(1)))
+    .transition().delay(1700).duration(780).ease(d3.easeQuadIn)
+    .attr("opacity", .22);
+
+  /* 6 — profile polygon (with bleed shadow underneath) */
+  const profileTarget = dims.map((d,i)=> pt(i, ringR(d.level)));
+  const profileSeed   = dims.map(()=> [cx, cy]);
+
+  const bleed = root.append("polygon")
+    .attr("class","profile-bleed")
+    .attr("filter","url(#bleed)")
+    .attr("opacity", 0)
+    .attr("points", polyStr(profileSeed));
+  const profile = root.append("polygon")
+    .attr("class","profile")
+    .attr("points", polyStr(profileSeed));
+
+  profile.transition().delay(2400).duration(900).ease(d3.easeCubicInOut)
+    .attrTween("points", () => {
+      const a = profileSeed.flat(), b = profileTarget.flat();
+      const interp = d3.interpolateArray(a, b);
+      return t => {
+        const arr = interp(t);
+        let s=""; for (let i=0;i<arr.length;i+=2) s += arr[i].toFixed(2)+","+arr[i+1].toFixed(2)+" ";
+        return s.trim();
+      };
+    });
+
+  bleed.transition().delay(2520).duration(900).ease(d3.easeCubicInOut)
+    .attrTween("points", () => {
+      const a = profileSeed.flat(), b = profileTarget.flat();
+      const interp = d3.interpolateArray(a, b);
+      return t => {
+        const arr = interp(t);
+        let s=""; for (let i=0;i<arr.length;i+=2) s += arr[i].toFixed(2)+","+arr[i+1].toFixed(2)+" ";
+        return s.trim();
+      };
+    })
+    .attr("opacity", 1);
+
+  /* 7 — vertex dots (gap-coloured if below baseline) */
+  root.selectAll(".vertex")
+    .data(profileTarget).enter().append("circle")
+    .attr("class", (d,i) => dims[i].level < 1 ? "vertex-gap" : "vertex")
+    .attr("cx", cx).attr("cy", cy)
+    .attr("r", 0)
+    .transition().delay((d,i)=>2600 + i*55).duration(280).ease(d3.easeCubicOut)
+    .attr("cx", d => d[0]).attr("cy", d => d[1])
+    .attr("r", 3.8);
+
+  /* 8 — marginalia for the below-baseline dimension (LRK, index 3) */
+  const gapIdx = dims.findIndex(d => d.level < 1);
+  if (gapIdx >= 0) {
+    const [vx, vy] = pt(gapIdx, ringR(dims[gapIdx].level));
+    // leader line curves from the vertex outward past the ring
+    const [ex, ey] = pt(gapIdx, R + 90);
+    const mx = ex + (Math.cos(angle(gapIdx)) > 0 ? 8 : -8);
+    const my = ey + 14;
+
+    const leader = root.append("path")
+      .attr("class","leader")
+      .attr("d", `M ${vx},${vy} Q ${(vx+ex)/2 + 12},${(vy+ey)/2 + 8} ${ex},${ey}`)
+      .attr("stroke-dasharray","0 500")
+      .attr("opacity", 1);
+    const totalLen = leader.node().getTotalLength();
+    leader
+      .attr("stroke-dasharray", `0 ${totalLen}`)
+      .transition().delay(3200).duration(520).ease(d3.easeQuadOut)
+      .attrTween("stroke-dasharray", () => t => `${t*totalLen} ${totalLen}`);
+
+    const note = root.append("text")
+      .attr("class","marginalia-svg")
+      .attr("x", ex + (Math.cos(angle(gapIdx)) > 0 ? 6 : -6))
+      .attr("y", ey + 4)
+      .attr("text-anchor", Math.cos(angle(gapIdx)) > 0 ? "start" : "end")
+      .attr("opacity", 0)
+      .text("Below baseline — legal &  regulatory gap.");
+    note.transition().delay(3500).duration(440).ease(d3.easeCubicOut)
+      .attr("opacity", 1);
+  }
+
+  /* 9 — stamp overprints */
+  d3.select("#stamp")
+    .style("opacity", 0)
+    .transition().delay(3800).duration(560).ease(d3.easeQuadOut)
+    .style("opacity", .78);
+}
+
+/* kick off after fonts are ready (prevents label reflow mid-animation) */
+function start() { requestAnimationFrame(() => draw()); }
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(start);
+} else {
+  window.addEventListener("load", start);
+}
+document.getElementById("replay").addEventListener("click", draw);
+</script>
+</body>
+</html>

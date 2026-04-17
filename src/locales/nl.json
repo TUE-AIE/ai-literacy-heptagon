@@ -1,0 +1,202 @@
+{
+  "app": {
+    "kicker": "TU/e · Library & Information Services · AI Enablement Program",
+    "title.line1": "De AI-geletterdheid",
+    "title.line2": "Heptagon.",
+    "lede": "Zeven dimensies, vier niveaus, één figuur — een zelfevaluatie-instrument voor LIS, weergegeven als een interactieve publicatieplaat.",
+    "stamp": "Concept · v0.1 · 2026-04-17",
+    "replay": "Herhaal reveal",
+    "languageToggle.aria": "Taal wijzigen",
+    "back": "Terug",
+    "next": "Volgende",
+    "startOver": "Opnieuw beginnen",
+    "continue": "Doorgaan"
+  },
+  "landing": {
+    "heading": "Hoe staat het met AI-geletterdheid, hier, nu?",
+    "body": "Vul een korte zelfevaluatie in aan de hand van de zeven dimensies en produceer een profiel. Deel het bestand met je teamlead of houd het privé — er verlaat niets je browser totdat je het exporteert.",
+    "cta.individual": "Evalueer mezelf",
+    "cta.team": "Evalueer mijn team",
+    "cta.resume": "Concept hervatten",
+    "cta.aggregator": "Open aggregator",
+    "notes": {
+      "time.title": "Tijd",
+      "time.body": "Tien minuten. Eerlijk gaat boven volledig — kies de omschrijving die op dit moment het best bij je past.",
+      "privacy.title": "Privacy",
+      "privacy.body": "Geen accounts, geen tracking, geen server. Je antwoorden blijven in deze browser-tab totdat je ze zelf downloadt.",
+      "export.title": "Wat je eruit haalt",
+      "export.body": "Een JSON-bestand dat je kunt bewaren of delen, en een gezette PNG-plaat van de heptagon voor rapporten en slides."
+    }
+  },
+  "citation": {
+    "label": "Gebaseerd op",
+    "body": "<strong>Hackl, V., Müller, A. E., & Sailer, M.</strong> (2025). <em>The AI Literacy Heptagon: A Structured Approach to AI Literacy in Higher Education.</em>",
+    "venue": "arXiv preprint 2509.18900 [cs.CY], Universiteit van Passau.",
+    "linkLabel": "Lees het artikel (arXiv)",
+    "note": "De zeven dimensies, vier Bloom-gerelateerde niveaus en het basislijnbegrip komen direct uit het Heptagon-raamwerk van het artikel (Figuur 3, Tabel 3). Dit instrument is een implementatie-hulpmiddel van het TU/e LIS AI Literacy Team; het is niet gelieerd aan de auteurs."
+  },
+  "scope": {
+    "individual.title": "Over jou",
+    "individual.body": "Optioneel. De naam staat alleen in het geëxporteerde bestand; de rest helpt de aggregator je profiel in de organisatie te plaatsen.",
+    "team.title": "Over het team",
+    "team.body": "Een teamprofiel wordt óf door de lead ingevuld, óf later berekend door individuele exports in de aggregator in te lezen.",
+    "field.name": "Naam",
+    "field.name.placeholder.individual": "Je naam (optioneel)",
+    "field.name.placeholder.team": "Naam van het team",
+    "field.role": "Rol",
+    "field.role.placeholder": "bijv. Information Specialist",
+    "field.productArea": "Product Area",
+    "field.productArea.placeholder": "Selecteer…",
+    "field.team": "Team",
+    "field.team.placeholder": "Selecteer…",
+    "field.participantCount": "Aantal deelnemers",
+    "begin": "Start evaluatie"
+  },
+  "assess": {
+    "progress": "Dimensie {{current}} van {{total}}",
+    "question": "Welke omschrijving past op dit moment het best bij <em>{{dimension}}</em>?",
+    "evidence.label": "Toelichting (optioneel)",
+    "evidence.placeholder": "Waar denk je aan? Eén zin is genoeg.",
+    "previous": "Vorige",
+    "next": "Volgende dimensie",
+    "review": "Bekijken & afronden"
+  },
+  "results": {
+    "heading": "Je profiel",
+    "body": "Hieronder de heptagon zoals jij hem zojuist beschreef. Dimensies binnen de terracotta-band liggen onder het Beginnerniveau dat LIS van iedere medewerker verwacht.",
+    "dimensionCard.level": "Niveau {{n}} — {{name}}",
+    "export.json": "Download JSON",
+    "export.png": "Download PNG-plaat",
+    "startOver": "Nieuwe evaluatie starten"
+  },
+  "aggregator": {
+    "kicker": "TU/e · LIS · AI Literacy Aggregator",
+    "title.line1": "Geaggregeerde",
+    "title.line2": "geletterdheid.",
+    "lede": "Sleep de JSON-profielen die je team heeft geëxporteerd hierheen. Alles wordt in jouw browser berekend — geen enkel profiel verlaat dit tabblad.",
+    "drop.prompt": "Sleep JSON-profielen hier",
+    "drop.or": "of",
+    "drop.pick": "kies bestanden",
+    "drop.hint": "Eén of meer heptagon JSON-exports. Bestanden die niet aan het schema voldoen worden gemarkeerd en overgeslagen.",
+    "import.added": "{{count}} profiel toegevoegd",
+    "import.added_plural": "{{count}} profielen toegevoegd",
+    "import.skipped": "{{count}} bestand overgeslagen ({{reason}})",
+    "import.skipped_plural": "{{count}} bestanden overgeslagen ({{reason}})",
+    "clear": "Alles wissen",
+    "level.root": "LIS",
+    "level.pa": "Product Area",
+    "level.team": "Team",
+    "level.individual": "Individu",
+    "summary.one": "{{count}} profiel",
+    "summary.many": "{{count}} profielen verdeeld over {{groups}}",
+    "card.profilesOne":  "{{count}} profiel",
+    "card.profilesMany": "{{count}} profielen",
+    "card.teamsOne":     "{{count}} team",
+    "card.teamsMany":    "{{count}} teams",
+    "card.profilesAcrossTeamsOne":  "{{profiles}} profielen · {{teams}} team",
+    "card.profilesAcrossTeamsMany": "{{profiles}} profielen · {{teams}} teams",
+    "aggregate.mean": "Gemiddeld profiel",
+    "aggregate.minmax": "Min–max-band",
+    "aggregate.below": "{{count}} dimensie onder basislijn",
+    "aggregate.below_plural": "{{count}} dimensies onder basislijn",
+    "children.pa": "Product Areas",
+    "children.team": "Teams",
+    "children.individual": "Individuen",
+    "children.empty": "Nog geen profielen op dit niveau.",
+    "privacy.redacted": "Profielen verborgen voor privacy (minimaal {{min}} nodig).",
+    "privacy.showIndividuals": "Toon individuele profielen",
+    "privacy.hideIndividuals": "Verberg individuele profielen",
+    "back": "Terug naar evaluatie",
+    "drilldownHint": "Klik op een kaart om in te zoomen.",
+    "validation.heading": "Bestanden overgeslagen",
+    "validation.close": "Sluiten",
+    "mode.drill": "Inzoomen",
+    "mode.compare": "Vergelijken",
+    "mode.diff": "Toon verschillen",
+    "compare.hint": "Klik tot drie kaarten om ze samen weer te geven.",
+    "compare.clear": "Selectie wissen",
+    "compare.legendTitle": "Weergave",
+    "compare.tooFew": "Selecteer ten minste twee kaarten om te vergelijken.",
+    "diff.legend": "Afstand tot Beginner-basislijn",
+    "diff.positive": "Boven basislijn",
+    "diff.negative": "Onder basislijn",
+    "diff.zero":     "Op basislijn"
+  },
+  "figure": {
+    "caption.title": "Figuur 1 — Profiel van het team <em>Information Literacy & Education</em>.",
+    "caption.meta": "LIS / Library & Open Science / 2026-04-17"
+  },
+  "margin": {
+    "reading.title": "De plaat lezen",
+    "reading.body": "Zeven assen, één per dimensie. Vier concentrische ringen: <em>Onbewust</em>, <em>Beginner</em>, <em>Gemiddeld</em>, <em>Expert</em>. De terracotta-band markeert de basislijn (Beginner) die van iedere LIS-medewerker wordt verwacht.",
+    "profile.title": "Het profiel",
+    "profile.body": "De rode veelhoek is de huidige zelfevaluatie. Waar een hoekpunt onder de terracotta-band valt, ligt de dimensie onder de basislijn — de kanttekening op de plaat wijst dit aan.",
+    "interaction.title": "Interactie",
+    "interaction.body": "Hover over een hoekpunt voor de Bloom-gerelateerde omschrijving. Exporteer als JSON of gezette PNG-plaat."
+  },
+  "levels": {
+    "unaware":      "Onbewust",
+    "beginner":     "Beginner",
+    "intermediate": "Gemiddeld",
+    "expert":       "Expert"
+  },
+  "dimensions": {
+    "technical":        { "short": "Technisch",         "full": "Technische kennis en vaardigheden" },
+    "application":      { "short": "Toepassing",        "full": "Toepassingsvaardigheid" },
+    "integration":      { "short": "Integratie",        "full": "Integratievaardigheden" },
+    "legal":            { "short": "Juridisch",         "full": "Juridische en regelgevende kennis" },
+    "socialImpact":     { "short": "Maatschappelijk",   "full": "Inzicht in maatschappelijke impact" },
+    "ethical":          { "short": "Ethisch",           "full": "Ethisch bewustzijn en redeneren" },
+    "criticalThinking": { "short": "Kritisch denken",   "full": "Kritisch denkvermogen" }
+  },
+  "anchors": {
+    "technical": {
+      "unaware":      "Geen besef van AI-systemen.",
+      "beginner":     "Herkent en verklaart basisprincipes, functies en mechanismen van AI-systemen.",
+      "intermediate": "Past AI-algoritmen en dataverwerkingstechnieken toe in praktische scenario's en analyseert ze.",
+      "expert":       "Evalueert, ontwikkelt en optimaliseert geavanceerde AI-oplossingen en rekenprocessen."
+    },
+    "application": {
+      "unaware":      "Gebruikt geen AI-tools.",
+      "beginner":     "Herkent en beschrijft basistoepassingen van AI.",
+      "intermediate": "Implementeert en past AI-technologieën aan om praktische problemen effectief op te lossen.",
+      "expert":       "Evalueert AI-toepassingen kritisch en ontwerpt strategisch innovatieve toepassingen."
+    },
+    "criticalThinking": {
+      "unaware":      "Niet bewust van implicaties of beperkingen van AI.",
+      "beginner":     "Herkent en verklaart basismogelijkheden en beperkingen van AI-systemen.",
+      "intermediate": "Analyseert en beoordeelt kritisch de geschiktheid van AI voor specifieke contexten.",
+      "expert":       "Evalueert AI-systemen grondig en stelt geavanceerde oplossingen voor opkomende vraagstukken voor."
+    },
+    "integration": {
+      "unaware":      "Niet in staat AI-technologieën in persoonlijke of professionele digitale omgevingen op te nemen.",
+      "beginner":     "Herkent en beschrijft basismogelijkheden om AI-oplossingen in verschillende contexten te integreren.",
+      "intermediate": "Implementeert en analyseert integratiestrategieën, past AI-oplossingen flexibel aan verschillende contexten aan en reageert op technologische veranderingen.",
+      "expert":       "Evalueert complexe integratiescenario's, ontwerpt innovatieve AI-integraties en ontwikkelt adaptieve strategieën voor het opnemen van nieuwe AI-ontwikkelingen."
+    },
+    "legal": {
+      "unaware":      "Geen besef van juridische kaders rond AI.",
+      "beginner":     "Herinnert en begrijpt fundamentele juridische en regelgevende kaders voor AI.",
+      "intermediate": "Past regelgevende implicaties toe en analyseert ze in specifieke AI-scenario's.",
+      "expert":       "Evalueert juridische risico's grondig en ontwerpt richtlijnen die voldoen aan evoluerende AI-regelgeving."
+    },
+    "ethical": {
+      "unaware":      "Niet bewust van ethische implicaties van AI.",
+      "beginner":     "Herkent en verklaart ethische principes relevant voor AI.",
+      "intermediate": "Past ethische principes toe en analyseert ethische implicaties in specifieke AI-scenario's.",
+      "expert":       "Evalueert complexe ethische vraagstukken en formuleert standaarden voor ethische ontwikkeling en gebruik van AI."
+    },
+    "socialImpact": {
+      "unaware":      "Niet bewust van maatschappelijke impact van AI-technologieën.",
+      "beginner":     "Herkent en verklaart basisimpact van AI op menselijke interactie en werkomgevingen.",
+      "intermediate": "Beoordeelt en analyseert hoe AI-technologieën de samenleving en sociale structuren beïnvloeden.",
+      "expert":       "Evalueert complexe maatschappelijke gevolgen, voorziet toekomstige consequenties en ontwikkelt strategieën voor verantwoorde AI-integratie."
+    }
+  },
+  "heptagon": {
+    "title": "AI-geletterdheidsprofiel",
+    "desc.intro": "Een radar-achtige figuur met zeven assen. Profielniveaus:",
+    "desc.below":  "(onder basislijn)",
+    "gap.marginalia": "Onder basislijn — kennislacune."
+  }
+}

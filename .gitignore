@@ -1,0 +1,23 @@
+node_modules
+dist
+dist-ssr
+*.local
+
+.DS_Store
+.vite
+.env
+.env.local
+.env.*.local
+
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+.vscode/*
+!.vscode/settings.json
+.idea
+
+# Per-developer Claude Code settings. Shared launch.json stays checked-in.
+.claude/settings.local.json

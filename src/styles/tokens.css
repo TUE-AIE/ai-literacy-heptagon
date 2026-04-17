@@ -1,0 +1,47 @@
+/*
+ * Editorial Diagram design tokens — see PLAN.md §8.
+ * Colours are committed, not a generic design-system palette.
+ * All components should pull from these variables; no raw hex in component files.
+ */
+
+:root {
+  /* Colour */
+  --ink:         #14121A;
+  --ink-soft:    rgba(20, 18, 26, 0.62);
+  --ink-hairline: rgba(20, 18, 26, 0.35);
+  --paper:       #F2EDE3;
+  --paper-shade: #E6DECC;
+  --baseline:    #C04A2A;
+  --profile:     #C8102E;
+  --gap-marker:  #8A6A1E;
+  --annotation:  #5B4F3A;
+
+  /* Type */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-ui:      "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  /* Proportions derived from the heptagon */
+  --grid-cols: 7;
+  --grid-gap: 28px;
+
+  /* Motion */
+  --ease-editorial: cubic-bezier(0.65, 0.0, 0.35, 1.0);
+}
+
+/* Dark theme — a lithograph under warm reading lamp, not a mechanical inversion. */
+[data-theme="dark"] {
+  --ink:         #E8D6A8;
+  --ink-soft:    rgba(232, 214, 168, 0.62);
+  --ink-hairline: rgba(232, 214, 168, 0.35);
+  --paper:       #0E1020;
+  --paper-shade: #14172B;
+  --baseline:    #B5502F;
+  --profile:     #E9354A;
+  --gap-marker:  #C9A45A;
+  --annotation:  #9A8B6A;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-scale: 0; }
+}
