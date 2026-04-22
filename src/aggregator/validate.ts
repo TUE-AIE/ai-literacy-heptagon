@@ -1,13 +1,15 @@
 import { DIMENSIONS } from "../content/dimensions";
-import { ExportDocument, HEPTAGON_VERSION } from "../export/json";
+import { SUBS_PER_DIM } from "../content/questions";
+import { ExportDocument, HEPTAGON_VERSION, SCHEMA_VERSION } from "../export/json";
 
 export type ValidationResult =
   | { ok: true;  doc: ExportDocument }
   | { ok: false; errors: string[] };
 
 /**
- * Check an unknown value matches the export schema. Errors are plain English,
- * aimed at a team lead who might be looking at the file themselves to fix it.
+ * Validate an unknown value against the v2.0 export schema. Errors are plain
+ * English so a team lead can fix a broken file themselves. v1.0 exports are
+ * recognised and rejected with a specific message pointing at the upgrade.
  */
 export function validateExport(raw: unknown): ValidationResult {
   const errors: string[] = [];
@@ -16,7 +18,16 @@ export function validateExport(raw: unknown): ValidationResult {
   }
   const r = raw as Record<string, unknown>;
 
-  if (typeof r.schemaVersion !== "string")  errors.push("Missing schemaVersion.");
+  if (typeof r.schemaVersion !== "string") {
+    errors.push("Missing schemaVersion.");
+  } else if (r.schemaVersion === "1.0") {
+    return { ok: false, errors: [
+      `This is a v1.0 export. The assessment has been upgraded to v${SCHEMA_VERSION} (four sub-questions per dimension); please ask the respondent to re-run the assessment.`
+    ]};
+  } else if (r.schemaVersion !== SCHEMA_VERSION) {
+    errors.push(`Unknown schemaVersion "${r.schemaVersion}" (expected "${SCHEMA_VERSION}").`);
+  }
+
   if (r.heptagonVersion !== HEPTAGON_VERSION) {
     errors.push(`Unknown heptagonVersion (expected "${HEPTAGON_VERSION}").`);
   }
@@ -39,9 +50,15 @@ export function validateExport(raw: unknown): ValidationResult {
         errors.push(`Missing ${d.code} assessment.`);
         continue;
       }
-      const lv = (cell as Record<string, unknown>).level;
-      if (typeof lv !== "number" || !Number.isFinite(lv) || lv < 0 || lv > 3 || Math.floor(lv) !== lv) {
-        errors.push(`${d.code} level must be an integer 0–3.`);
+      const c = cell as Record<string, unknown>;
+      const subs = c.subScores;
+      if (!Array.isArray(subs) || subs.length !== SUBS_PER_DIM) {
+        errors.push(`${d.code} must have an array of ${SUBS_PER_DIM} subScores.`);
+      } else if (!subs.every((s) => typeof s === "number" && Number.isInteger(s) && s >= 0 && s <= 3)) {
+        errors.push(`${d.code} subScores must each be an integer 0–3.`);
+      }
+      if (typeof c.level !== "number" || !Number.isFinite(c.level) || c.level < 0 || c.level > 3) {
+        errors.push(`${d.code} level must be a number in 0..3.`);
       }
     }
   }

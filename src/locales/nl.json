@@ -4,7 +4,7 @@
     "title.line1": "De AI-geletterdheid",
     "title.line2": "Heptagon.",
     "lede": "Zeven dimensies, vier niveaus, één figuur — een zelfevaluatie-instrument voor LIS, weergegeven als een interactieve publicatieplaat.",
-    "stamp": "Concept · v0.1 · 2026-04-17",
+    "stamp": "v2.0 · 2026-04-22",
     "replay": "Herhaal reveal",
     "languageToggle.aria": "Taal wijzigen",
     "back": "Terug",
@@ -13,61 +13,91 @@
     "continue": "Doorgaan"
   },
   "landing": {
-    "heading": "Hoe staat het met AI-geletterdheid, hier, nu?",
-    "body": "Vul een korte zelfevaluatie in aan de hand van de zeven dimensies en produceer een profiel. Deel het bestand met je teamlead of houd het privé — er verlaat niets je browser totdat je het exporteert.",
+    "heading": "Waar staat AI-geletterdheid, hier, vandaag?",
+    "body": "Achtentwintig korte vragen over zeven dimensies leveren een genuanceerd profiel op. Houd het privé of deel het bestand met je teamlead — niets verlaat je browser tenzij je zelf exporteert.",
     "cta.individual": "Evalueer mezelf",
     "cta.team": "Evalueer mijn team",
     "cta.resume": "Concept hervatten",
     "cta.aggregator": "Open aggregator",
+    "cta.about": "Over dit instrument",
     "notes": {
       "time.title": "Tijd",
-      "time.body": "Tien minuten. Eerlijk gaat boven volledig — kies de omschrijving die op dit moment het best bij je past.",
+      "time.body": "Ongeveer 15 minuten. Eerlijk is belangrijker dan volledig — kies de optie die het best bij je dagelijkse praktijk past.",
       "privacy.title": "Privacy",
-      "privacy.body": "Geen accounts, geen tracking, geen server. Je antwoorden blijven in deze browser-tab totdat je ze zelf downloadt.",
-      "export.title": "Wat je eruit haalt",
-      "export.body": "Een JSON-bestand dat je kunt bewaren of delen, en een gezette PNG-plaat van de heptagon voor rapporten en slides."
+      "privacy.body": "Geen account, geen tracking, geen server. Je antwoorden blijven in dit browsertabblad totdat je ze zelf downloadt.",
+      "export.title": "Wat je eruit krijgt",
+      "export.body": "Een JSON-bestand dat je kunt bewaren of delen, plus een gezette PNG van de heptagon-plaat voor rapporten en slides."
     }
+  },
+  "onboarding": {
+    "why.title": "Waarom brengen we AI-geletterdheid in LIS in kaart?",
+    "why.body.1": "Kunstmatige Intelligentie maakt een steeds groter deel uit van de manier waarop we onderwijs, onderzoek en open science aan de TU/e ondersteunen. Als Library & Information Services hebben we op veel manieren met AI te maken: advies aan medewerkers en studenten, tooling selecteren, diensten ontwerpen, juridische en ethische implicaties duiden en verantwoord gebruik ondersteunen.",
+    "why.body.2": "Tegelijkertijd raakt AI elke rol en dienst anders. Niet iedereen heeft hetzelfde expertiseniveau nodig, en van niemand wordt verwacht dat die overal expert in is.",
+    "why.body.3": "Daarom gebruikt LIS de AI-geletterdheid Heptagon: als een gedeeld reflectie- en ontwikkelinstrument, niet als toets.",
+    "reasons.title": "Waarom vragen we je hierover te reflecteren?",
+    "reasons.1.title": "1. Om te zien waar we nu staan",
+    "reasons.1.body": "LIS heeft al veel kennis en ervaring in huis — maar die is ongelijk verdeeld over rollen, teams en diensten. Een gedeeld overzicht helpt sterktes, lacunes en overlappingen zichtbaar te maken.",
+    "reasons.2.title": "2. Om duidelijk te maken waar we heen moeten",
+    "reasons.2.body": "Verschillende LIS-product areas vragen om verschillende AI-geletterdheidsprofielen. Sommige rollen hebben diepere juridische en ethische expertise nodig; andere juist sterkere integratie- of toepassingsvaardigheden. Dit in kaart brengen helpt ons intentioneel te werken in plaats van reactief.",
+    "reasons.3.title": "3. Om leren en ontwikkeling te ondersteunen",
+    "reasons.3.body": "De resultaten worden gebruikt om trainings- en ontwikkeltrajecten te sturen, teamdiscussies over rollen en verwachtingen te ondersteunen, en strategische keuzes rond AI binnen LIS te informeren. Het gaat om groei, niet om beoordeling.",
+    "notATest.title": "Wat dit niet is",
+    "notATest.body": "Om heel duidelijk te zijn: dit is geen functioneringsgesprek, geen test van intelligentie of competentie, geen middel om individuen of teams te rangschikken, en er is geen verwachting dat iedereen het Expert-niveau moet halen. Er is geen ideaal persoonlijk profiel.",
+    "approach.title": "Hoe je de vragen aanpakt",
+    "approach.body": "Antwoord eerlijk, op basis van je huidige situatie. Kies de optie die het best jouw dagelijkse praktijk weergeeft, niet wat je zou willen. Het is volstrekt normaal — en verwacht — dat je op verschillende dimensies verschillend scoort. Veel mensen zijn op het ene vlak Gemiddeld en op het andere Beginner. Dat is precies wat dit instrument zichtbaar moet maken.",
+    "next.title": "Wat er daarna gebeurt",
+    "next.body": "Individuele resultaten worden geaggregeerd gebruikt. LIS definieert ook doelprofielen per product area. Samen helpt dat ons onderbouwde, realistische keuzes te maken over hoe LIS met AI omgaat — nu en in de toekomst.",
+    "close": "Begrepen"
   },
   "citation": {
     "label": "Gebaseerd op",
     "body": "<strong>Hackl, V., Müller, A. E., & Sailer, M.</strong> (2025). <em>The AI Literacy Heptagon: A Structured Approach to AI Literacy in Higher Education.</em>",
-    "venue": "arXiv preprint 2509.18900 [cs.CY], Universiteit van Passau.",
-    "linkLabel": "Lees het artikel (arXiv)",
-    "note": "De zeven dimensies, vier Bloom-gerelateerde niveaus en het basislijnbegrip komen direct uit het Heptagon-raamwerk van het artikel (Figuur 3, Tabel 3). Dit instrument is een implementatie-hulpmiddel van het TU/e LIS AI Literacy Team; het is niet gelieerd aan de auteurs."
+    "venue": "arXiv-preprint 2509.18900 [cs.CY], University of Passau.",
+    "linkLabel": "Lees het paper (arXiv)",
+    "note": "De zeven dimensies en vier Bloom-georiënteerde niveaus komen rechtstreeks uit het Heptagon-framework in het paper. De 28 deelvragen en de LIS-doelprofielen per rol zijn opgesteld door het AI Literacy Team van TU/e LIS."
   },
   "scope": {
     "individual.title": "Over jou",
-    "individual.body": "Optioneel. De naam staat alleen in het geëxporteerde bestand; de rest helpt de aggregator je profiel in de organisatie te plaatsen.",
+    "individual.body": "Optioneel. De naam wordt alleen in het geëxporteerde bestand opgeslagen; de rest helpt de aggregator je profiel te plaatsen binnen de organisatie.",
     "team.title": "Over het team",
-    "team.body": "Een teamprofiel wordt óf door de lead ingevuld, óf later berekend door individuele exports in de aggregator in te lezen.",
+    "team.body": "Een teamprofiel wordt ofwel door de lead namens het team ingevuld, of later berekend door individuele exports in de aggregator in te laden.",
     "field.name": "Naam",
     "field.name.placeholder.individual": "Je naam (optioneel)",
-    "field.name.placeholder.team": "Naam van het team",
-    "field.role": "Rol",
-    "field.role.placeholder": "bijv. Information Specialist",
+    "field.name.placeholder.team": "Teamnaam",
+    "field.role": "Functie",
+    "field.role.placeholder": "bv. Information Specialist",
     "field.productArea": "Product Area",
-    "field.productArea.placeholder": "Selecteer…",
+    "field.productArea.placeholder": "Kies…",
     "field.team": "Team",
-    "field.team.placeholder": "Selecteer…",
+    "field.team.placeholder": "Kies…",
     "field.participantCount": "Aantal deelnemers",
+    "field.roleArchetype": "LIS-rolarchetype",
+    "field.roleArchetype.body": "Optioneel. Door een archetype te kiezen wordt het doelprofiel over je resultaat gelegd, zodat je lacunes ten opzichte van dat doel kunt zien.",
+    "field.roleArchetype.none": "Geen doel / anders",
     "begin": "Start evaluatie"
   },
   "assess": {
     "progress": "Dimensie {{current}} van {{total}}",
-    "question": "Welke omschrijving past op dit moment het best bij <em>{{dimension}}</em>?",
-    "evidence.label": "Toelichting (optioneel)",
-    "evidence.placeholder": "Waar denk je aan? Eén zin is genoeg.",
+    "heading": "{{dimension}}",
+    "sub.purpose": "Doel",
+    "sub.prompt": "Beantwoord alle vier de vragen voor deze dimensie en ga dan verder.",
     "previous": "Vorige",
     "next": "Volgende dimensie",
-    "review": "Bekijken & afronden"
+    "review": "Bekijk en afronden"
   },
   "results": {
     "heading": "Je profiel",
-    "body": "Hieronder de heptagon zoals jij hem zojuist beschreef. Dimensies binnen de terracotta-band liggen onder het Beginnerniveau dat LIS van iedere medewerker verwacht.",
-    "dimensionCard.level": "Niveau {{n}} — {{name}}",
+    "body": "Hieronder je heptagon, waarbij elke dimensie is gescoord als het gemiddelde van de vier deelvragen. Dimensies binnen de terracotta basislijn-band liggen onder het Beginner-niveau dat LIS van iedere medewerker verwacht.",
+    "body.withTarget": "De gestippelde band toont het doelprofiel voor de rol {{role}} — dimensies waar je polygon binnen de doelband valt liggen onder het doel voor die rol.",
+    "dimensionCard.level": "{{name}} · {{mean}}",
+    "dimensionCard.mean": "Gemiddelde",
+    "dimensionCard.subScores": "Deelscores",
     "export.json": "Download JSON",
     "export.png": "Download PNG-plaat",
-    "startOver": "Nieuwe evaluatie starten"
+    "startOver": "Nieuwe evaluatie starten",
+    "toggle.deltasBaseline": "Verschillen t.o.v. basislijn",
+    "toggle.deltasTarget": "Verschillen t.o.v. roldoel",
+    "toggle.deltasOff": "Verschillen verbergen"
   },
   "aggregator": {
     "kicker": "TU/e · LIS · AI Literacy Aggregator",
@@ -77,7 +107,7 @@
     "drop.prompt": "Sleep JSON-profielen hier",
     "drop.or": "of",
     "drop.pick": "kies bestanden",
-    "drop.hint": "Eén of meer heptagon JSON-exports. Bestanden die niet aan het schema voldoen worden gemarkeerd en overgeslagen.",
+    "drop.hint": "Eén of meer heptagon JSON-exports (schema v2.0). Bestanden die niet aan het schema voldoen worden gemarkeerd en overgeslagen.",
     "import.added": "{{count}} profiel toegevoegd",
     "import.added_plural": "{{count}} profielen toegevoegd",
     "import.skipped": "{{count}} bestand overgeslagen ({{reason}})",
@@ -99,6 +129,7 @@
     "aggregate.minmax": "Min–max-band",
     "aggregate.below": "{{count}} dimensie onder basislijn",
     "aggregate.below_plural": "{{count}} dimensies onder basislijn",
+    "target.overlay": "Roldoel: {{role}}",
     "children.pa": "Product Areas",
     "children.team": "Teams",
     "children.individual": "Individuen",
@@ -124,15 +155,15 @@
   },
   "figure": {
     "caption.title": "Figuur 1 — Profiel van het team <em>Information Literacy & Education</em>.",
-    "caption.meta": "LIS / Library & Open Science / 2026-04-17"
+    "caption.meta": "LIS / Library & Open Science / 2026-04-22"
   },
   "margin": {
     "reading.title": "De plaat lezen",
     "reading.body": "Zeven assen, één per dimensie. Vier concentrische ringen: <em>Onbewust</em>, <em>Beginner</em>, <em>Gemiddeld</em>, <em>Expert</em>. De terracotta-band markeert de basislijn (Beginner) die van iedere LIS-medewerker wordt verwacht.",
     "profile.title": "Het profiel",
-    "profile.body": "De rode veelhoek is de huidige zelfevaluatie. Waar een hoekpunt onder de terracotta-band valt, ligt de dimensie onder de basislijn — de kanttekening op de plaat wijst dit aan.",
+    "profile.body": "De rode veelhoek is de huidige zelfevaluatie van het team, elke dimensie gescoord als het gemiddelde van vier deelvragen.",
     "interaction.title": "Interactie",
-    "interaction.body": "Hover over een hoekpunt voor de Bloom-gerelateerde omschrijving. Exporteer als JSON of gezette PNG-plaat."
+    "interaction.body": "Hover over een hoekpunt voor het gemiddelde en de deelscores van die dimensie. Exporteer als JSON of als gezette PNG-plaat."
   },
   "levels": {
     "unaware":      "Onbewust",
@@ -141,62 +172,280 @@
     "expert":       "Expert"
   },
   "dimensions": {
-    "technical":        { "short": "Technisch",         "full": "Technische kennis en vaardigheden" },
-    "application":      { "short": "Toepassing",        "full": "Toepassingsvaardigheid" },
-    "integration":      { "short": "Integratie",        "full": "Integratievaardigheden" },
-    "legal":            { "short": "Juridisch",         "full": "Juridische en regelgevende kennis" },
-    "socialImpact":     { "short": "Maatschappelijk",   "full": "Inzicht in maatschappelijke impact" },
-    "ethical":          { "short": "Ethisch",           "full": "Ethisch bewustzijn en redeneren" },
-    "criticalThinking": { "short": "Kritisch denken",   "full": "Kritisch denkvermogen" }
+    "technical":        { "short": "Technisch",         "full": "Technische kennis en vaardigheden",  "purpose": "Begrijpen hoe AI-systemen werken en waar hun grenzen liggen." },
+    "application":      { "short": "Toepassing",        "full": "Toepassingsvaardigheid",             "purpose": "Effectief, reflectief en doelgericht gebruik van AI-tools." },
+    "integration":      { "short": "Integratie",        "full": "Integratievaardigheden",             "purpose": "AI zinvol inbedden in LIS-diensten en -workflows." },
+    "legal":            { "short": "Juridisch",         "full": "Juridische en regelgevende kennis",  "purpose": "Veilig en conform AI-gebruik in onderwijs- en onderzoeksondersteuning." },
+    "socialImpact":     { "short": "Maatschappelijk",   "full": "Inzicht in maatschappelijke impact", "purpose": "Begrijpen wat AI doet met de maatschappij, het onderwijs en de LIS-rol." },
+    "ethical":          { "short": "Ethisch",           "full": "Ethisch bewustzijn en redeneren",    "purpose": "Verantwoord en reflectief AI-gebruik." },
+    "criticalThinking": { "short": "Kritisch denken",   "full": "Kritisch denkvermogen",              "purpose": "Automation bias en overmatig vertrouwen voorkomen." }
   },
-  "anchors": {
-    "technical": {
-      "unaware":      "Geen besef van AI-systemen.",
-      "beginner":     "Herkent en verklaart basisprincipes, functies en mechanismen van AI-systemen.",
-      "intermediate": "Past AI-algoritmen en dataverwerkingstechnieken toe in praktische scenario's en analyseert ze.",
-      "expert":       "Evalueert, ontwikkelt en optimaliseert geavanceerde AI-oplossingen en rekenprocessen."
+  "questions": {
+    "TKS1": {
+      "prompt": "Hoe zou je je begrip van de werking van AI-systemen (bv. generatieve AI) omschrijven?",
+      "anchors": {
+        "unaware":      "Ik weet niet hoe AI-systemen intern werken",
+        "beginner":     "Ik weet dat AI getraind is op data en patronen herkent",
+        "intermediate": "Ik begrijp concepten zoals modellen, waarschijnlijkheden en hallucinaties",
+        "expert":       "Ik kan verschillende AI-benaderingen en hun implicaties vergelijken en uitleggen"
+      }
     },
-    "application": {
-      "unaware":      "Gebruikt geen AI-tools.",
-      "beginner":     "Herkent en beschrijft basistoepassingen van AI.",
-      "intermediate": "Implementeert en past AI-technologieën aan om praktische problemen effectief op te lossen.",
-      "expert":       "Evalueert AI-toepassingen kritisch en ontwerpt strategisch innovatieve toepassingen."
+    "TKS2": {
+      "prompt": "Hoe goed begrijp je de beperkingen van huidige AI-systemen?",
+      "anchors": {
+        "unaware":      "Ik ben niet bekend met specifieke beperkingen",
+        "beginner":     "Ik weet dat AI fout of bevooroordeeld kan zijn",
+        "intermediate": "Ik kan uitleggen waarom AI fouten maakt en wanneer output onbetrouwbaar is",
+        "expert":       "Ik analyseer risico's en faalmodi in verschillende contexten"
+      }
     },
-    "criticalThinking": {
-      "unaware":      "Niet bewust van implicaties of beperkingen van AI.",
-      "beginner":     "Herkent en verklaart basismogelijkheden en beperkingen van AI-systemen.",
-      "intermediate": "Analyseert en beoordeelt kritisch de geschiktheid van AI voor specifieke contexten.",
-      "expert":       "Evalueert AI-systemen grondig en stelt geavanceerde oplossingen voor opkomende vraagstukken voor."
+    "TKS3": {
+      "prompt": "Hoe zelfverzekerd kun je AI-concepten uitleggen aan studenten of collega's?",
+      "anchors": {
+        "unaware":      "Ik vermijd het uitleggen van AI",
+        "beginner":     "Ik geef eenvoudige uitleg op hoog niveau",
+        "intermediate": "Ik pas uitleg aan en corrigeer misvattingen",
+        "expert":       "Ik geef les of ontwerp lesmateriaal over AI"
+      }
     },
-    "integration": {
-      "unaware":      "Niet in staat AI-technologieën in persoonlijke of professionele digitale omgevingen op te nemen.",
-      "beginner":     "Herkent en beschrijft basismogelijkheden om AI-oplossingen in verschillende contexten te integreren.",
-      "intermediate": "Implementeert en analyseert integratiestrategieën, past AI-oplossingen flexibel aan verschillende contexten aan en reageert op technologische veranderingen.",
-      "expert":       "Evalueert complexe integratiescenario's, ontwerpt innovatieve AI-integraties en ontwikkelt adaptieve strategieën voor het opnemen van nieuwe AI-ontwikkelingen."
+    "TKS4": {
+      "prompt": "Hoe comfortabel ben je met het gebruik van correcte AI-terminologie?",
+      "anchors": {
+        "unaware":      "Ik ben niet bekend met AI-terminologie",
+        "beginner":     "Ik herken veelvoorkomende termen (bv. model, trainingsdata)",
+        "intermediate": "Ik gebruik terminologie accuraat in discussies",
+        "expert":       "Ik evalueer en verfijn kritisch hoe AI wordt uitgelegd"
+      }
     },
-    "legal": {
-      "unaware":      "Geen besef van juridische kaders rond AI.",
-      "beginner":     "Herinnert en begrijpt fundamentele juridische en regelgevende kaders voor AI.",
-      "intermediate": "Past regelgevende implicaties toe en analyseert ze in specifieke AI-scenario's.",
-      "expert":       "Evalueert juridische risico's grondig en ontwerpt richtlijnen die voldoen aan evoluerende AI-regelgeving."
+    "AP1": {
+      "prompt": "Hoe gebruik je momenteel AI-tools in je werk?",
+      "anchors": {
+        "unaware":      "Ik gebruik geen AI-tools",
+        "beginner":     "Ik experimenteer af en toe met eenvoudige taken",
+        "intermediate": "Ik gebruik regelmatig AI-tools voor werkzaamheden",
+        "expert":       "Ik ontwerp strategisch AI-ondersteunde workflows"
+      }
     },
-    "ethical": {
-      "unaware":      "Niet bewust van ethische implicaties van AI.",
-      "beginner":     "Herkent en verklaart ethische principes relevant voor AI.",
-      "intermediate": "Past ethische principes toe en analyseert ethische implicaties in specifieke AI-scenario's.",
-      "expert":       "Evalueert complexe ethische vraagstukken en formuleert standaarden voor ethische ontwikkeling en gebruik van AI."
+    "AP2": {
+      "prompt": "Hoe verbeter je de kwaliteit van AI-output?",
+      "anchors": {
+        "unaware":      "Ik pas de output niet aan",
+        "beginner":     "Ik maak kleine prompt-aanpassingen",
+        "intermediate": "Ik verfijn prompts en inputs iteratief",
+        "expert":       "Ik ontwikkel en deel effectieve prompting-strategieën"
+      }
     },
-    "socialImpact": {
-      "unaware":      "Niet bewust van maatschappelijke impact van AI-technologieën.",
-      "beginner":     "Herkent en verklaart basisimpact van AI op menselijke interactie en werkomgevingen.",
-      "intermediate": "Beoordeelt en analyseert hoe AI-technologieën de samenleving en sociale structuren beïnvloeden.",
-      "expert":       "Evalueert complexe maatschappelijke gevolgen, voorziet toekomstige consequenties en ontwikkelt strategieën voor verantwoorde AI-integratie."
+    "AP3": {
+      "prompt": "Hoe goed kun je inschatten of AI passend is voor een taak?",
+      "anchors": {
+        "unaware":      "Ik overweeg de geschiktheid niet",
+        "beginner":     "Ik vertrouw op trial-and-error",
+        "intermediate": "Ik weeg risico's, voordelen en taakpassing af",
+        "expert":       "Ik definieer criteria voor passend AI-gebruik"
+      }
+    },
+    "AP4": {
+      "prompt": "Hoe reageer je wanneer AI-output onjuist of misleidend is?",
+      "anchors": {
+        "unaware":      "Ik merk het niet of stel het niet ter discussie",
+        "beginner":     "Ik zie duidelijke fouten",
+        "intermediate": "Ik verifieer en corrigeer output systematisch",
+        "expert":       "Ik leer anderen AI-output kritisch te evalueren"
+      }
+    },
+    "CTA1": {
+      "prompt": "Hoe kritisch evalueer je AI-gegenereerde informatie?",
+      "anchors": {
+        "unaware":      "Ik vertrouw AI-output grotendeels",
+        "beginner":     "Ik controleer resultaten soms",
+        "intermediate": "Ik verifieer bronnen, logica en aannames",
+        "expert":       "Ik audit de redenering van AI kritisch"
+      }
+    },
+    "CTA2": {
+      "prompt": "Hoe bewust ben je van risico's zoals hallucinaties of bias?",
+      "anchors": {
+        "unaware":      "Ik ben niet bekend met deze risico's",
+        "beginner":     "Ik weet dat ze bestaan",
+        "intermediate": "Ik zoek er actief naar",
+        "expert":       "Ik anticipeer erop en kan ze contextueel verklaren"
+      }
+    },
+    "CTA3": {
+      "prompt": "Hoe besluit je of je AI-output gaat vertrouwen?",
+      "anchors": {
+        "unaware":      "Ik accepteer of verwerp zonder analyse",
+        "beginner":     "Ik oordeel op basis van intuïtie",
+        "intermediate": "Ik pas expliciete evaluatiecriteria toe",
+        "expert":       "Ik ontwerp evaluatiekaders"
+      }
+    },
+    "CTA4": {
+      "prompt": "Hoe ondersteun je anderen bij kritisch AI-gebruik?",
+      "anchors": {
+        "unaware":      "Ik ondersteun anderen hierin niet",
+        "beginner":     "Ik waarschuw soms",
+        "intermediate": "Ik leg uit hoe AI-output te verifiëren is",
+        "expert":       "Ik geef actief les in kritisch AI-gebruik"
+      }
+    },
+    "IS1": {
+      "prompt": "Hoe integreer je AI in bestaande workflows of diensten?",
+      "anchors": {
+        "unaware":      "Ik overweeg integratie niet",
+        "beginner":     "Ik gebruik AI-tools apart",
+        "intermediate": "Ik bed AI in in workflows",
+        "expert":       "Ik herontwerp workflows rond mens–AI-samenwerking"
+      }
+    },
+    "IS2": {
+      "prompt": "Hoe bepaal je of een AI-tool past bij een specifieke dienst of product?",
+      "anchors": {
+        "unaware":      "Ik beoordeel geschiktheid niet",
+        "beginner":     "Ik probeer tools informeel uit",
+        "intermediate": "Ik evalueer relevantie en impact",
+        "expert":       "Ik adviseer over strategische adoptie"
+      }
+    },
+    "IS3": {
+      "prompt": "Hoe reageer je op nieuwe AI-ontwikkelingen die relevant zijn voor je werk?",
+      "anchors": {
+        "unaware":      "Ik negeer ze",
+        "beginner":     "Ik verken ze uit nieuwsgierigheid",
+        "intermediate": "Ik beoordeel de potentiële waarde",
+        "expert":       "Ik scan actief en adviseer over trends"
+      }
+    },
+    "IS4": {
+      "prompt": "Hoe ga je om met verandering als gevolg van AI-adoptie?",
+      "anchors": {
+        "unaware":      "Ik pak het niet aan",
+        "beginner":     "Ik pas me reactief aan",
+        "intermediate": "Ik plan integratie en overgangen",
+        "expert":       "Ik leid of begeleid veranderprocessen"
+      }
+    },
+    "LRK1": {
+      "prompt": "Hoe bekend ben je met AI-relevante juridische kaders (bv. AVG, auteursrecht, EU AI Act)?",
+      "anchors": {
+        "unaware":      "Ik ben er niet mee bekend",
+        "beginner":     "Ik weet dat ze bestaan",
+        "intermediate": "Ik pas ze toe in concrete gevallen",
+        "expert":       "Ik interpreteer en verklaar de juridische implicaties"
+      }
+    },
+    "LRK2": {
+      "prompt": "Hoe goed kun je juridische risico's in AI-gebruik identificeren?",
+      "anchors": {
+        "unaware":      "Ik overweeg juridische risico's niet",
+        "beginner":     "Ik weet dat risico's kunnen bestaan",
+        "intermediate": "Ik herken gangbare risico's en waarborgen",
+        "expert":       "Ik beoordeel complexe risicoscenario's"
+      }
+    },
+    "LRK3": {
+      "prompt": "In welke mate beïnvloeden juridische overwegingen je AI-gerelateerde besluiten?",
+      "anchors": {
+        "unaware":      "Ze beïnvloeden mijn besluiten niet",
+        "beginner":     "Ze beïnvloeden mij informeel",
+        "intermediate": "Ze sturen mijn keuzes bewust",
+        "expert":       "Ik vertaal wet naar richtlijnen of beleid"
+      }
+    },
+    "LRK4": {
+      "prompt": "Hoe ondersteun je anderen bij AI-gerelateerde juridische vragen?",
+      "anchors": {
+        "unaware":      "Ik ondersteun anderen hier niet",
+        "beginner":     "Ik verwijs ze door",
+        "intermediate": "Ik leg basisregels uit",
+        "expert":       "Ik adviseer of ontwikkel richtlijnen"
+      }
+    },
+    "EAR1": {
+      "prompt": "Hoe bewust ben je van ethische kwesties rondom AI?",
+      "anchors": {
+        "unaware":      "Ik ben niet bekend met ethische kwesties",
+        "beginner":     "Ik herken voor de hand liggende zorgen",
+        "intermediate": "Ik analyseer ethische afwegingen",
+        "expert":       "Ik neem deel aan ethische besluitvorming"
+      }
+    },
+    "EAR2": {
+      "prompt": "Hoe beïnvloedt ethiek je AI-gebruik?",
+      "anchors": {
+        "unaware":      "Dat doet het niet",
+        "beginner":     "Het beïnvloedt mij informeel",
+        "intermediate": "Het stuurt concrete beslissingen",
+        "expert":       "Ik help ethische standaarden te definiëren"
+      }
+    },
+    "EAR3": {
+      "prompt": "Hoe goed kun je ethische risico's in AI-toepassingen identificeren?",
+      "anchors": {
+        "unaware":      "Ik identificeer geen risico's",
+        "beginner":     "Ik zie risico's op oppervlakteniveau",
+        "intermediate": "Ik analyseer contextspecifieke risico's",
+        "expert":       "Ik anticipeer op complexe ethische dilemma's"
+      }
+    },
+    "EAR4": {
+      "prompt": "Hoe ga je om met ethische vragen die anderen opwerpen?",
+      "anchors": {
+        "unaware":      "Ik behandel ze niet",
+        "beginner":     "Ik erken ze",
+        "intermediate": "Ik bespreek en doordenk ze",
+        "expert":       "Ik faciliteer ethische reflectie of governance"
+      }
+    },
+    "SIU1": {
+      "prompt": "Hoe goed begrijp je de bredere maatschappelijke impact van AI?",
+      "anchors": {
+        "unaware":      "Ik heb er niet over nagedacht",
+        "beginner":     "Ik weet dat AI werk en onderwijs beïnvloedt",
+        "intermediate": "Ik analyseer effecten op gelijkheid en toegang",
+        "expert":       "Ik draag bij aan strategische discussies"
+      }
+    },
+    "SIU2": {
+      "prompt": "Hoe overweeg je de impact van AI op studenten en onderzoekers?",
+      "anchors": {
+        "unaware":      "Ik overweeg dit niet",
+        "beginner":     "Ik benoem het informeel",
+        "intermediate": "Ik neem het mee in advies of onderwijs",
+        "expert":       "Ik vorm institutionele benaderingen"
+      }
+    },
+    "SIU3": {
+      "prompt": "Hoe bewust ben je van macht, inclusie en toegankelijkheidsvraagstukken rond AI?",
+      "anchors": {
+        "unaware":      "Ik ben er niet van op de hoogte",
+        "beginner":     "Ik weet dat deze kwesties spelen",
+        "intermediate": "Ik weeg ze actief mee",
+        "expert":       "Ik zet me in voor verantwoord gebruik"
+      }
+    },
+    "SIU4": {
+      "prompt": "Hoe beïnvloeden maatschappelijke overwegingen je professionele rol?",
+      "anchors": {
+        "unaware":      "Dat doen ze niet",
+        "beginner":     "Ze beïnvloeden mijn denken",
+        "intermediate": "Ze sturen mijn handelen",
+        "expert":       "Ze informeren strategie of beleid"
+      }
     }
+  },
+  "roles": {
+    "infoLitTeaching":       { "name": "Informatievaardigheden & Onderwijsondersteuning",   "description": "Docenten informatievaardigheden en onderwijsondersteuners. Profiellogica: sterke ethische, kritische en maatschappelijke focus; solide maar niet sterk technisch." },
+    "researchOpenScience":   { "name": "Research Support & Open Science",                   "description": "Data stewards, open-science-adviseurs, onderzoeksondersteunende librarians. Profiellogica: juridische/regelgevende diepte en kritisch oordeel wegen zwaarder dan technische ontwikkelvaardigheden." },
+    "copyrightLegalPolicy":  { "name": "Auteursrecht, Juridisch & Beleidsondersteuning",    "description": "Copyright officers, beleidsadviseurs, integriteitsondersteuning. Profiellogica: juridische en ethische diepte; AI-gebruik zelf is ondergeschikt." },
+    "digitalServicesSystems":{ "name": "Digital Services / Library Systems",                "description": "Discovery, systems librarians, toolselectie, platformondersteuning. Profiellogica: integratie is de onderscheidende expert-dimensie." },
+    "frontOfficeSupport":    { "name": "Frontoffice / Gebruikersondersteuning",              "description": "Servicedesks, eerstelijnsondersteuning bij AI-vragen. Profiellogica: rol als portier en gids — geen diepe expertise." },
+    "managementCoordination":{ "name": "LIS Management & Coördinatie",                       "description": "Teamleads, product owners, coördinatoren. Profiellogica: governance-zwaar, evaluatie-zwaar, cultuurbepalende rol." }
   },
   "heptagon": {
     "title": "AI-geletterdheidsprofiel",
     "desc.intro": "Een radar-achtige figuur met zeven assen. Profielniveaus:",
     "desc.below":  "(onder basislijn)",
-    "gap.marginalia": "Onder basislijn — kennislacune."
+    "gap.marginalia": "Onder basislijn — lacune."
   }
 }

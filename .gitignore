@@ -21,3 +21,8 @@ pnpm-debug.log*
 
 # Per-developer Claude Code settings. Shared launch.json stays checked-in.
 .claude/settings.local.json
+
+# Source documents dropped into the working tree for reference but not part
+# of the product. Re-add explicitly if you want a particular one committed.
+*.docx
+~$*

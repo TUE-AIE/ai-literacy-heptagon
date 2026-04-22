@@ -34,8 +34,12 @@ export const DIMENSIONS: readonly DimensionMeta[] = [
 
 export type DimensionCode = (typeof DIMENSIONS)[number]["code"];
 
-/** A profile = a level (0–3) for each dimension code. */
-export type Profile = Record<DimensionCode, LevelIndex>;
+/**
+ * A profile = a computed mean (0..3, fractional) for each dimension code.
+ * Under schema v2.0 this is derived from four sub-scores per dimension; the
+ * raw sub-scores live in `DraftSubScores` and in each `ExportDocument`.
+ */
+export type Profile = Record<DimensionCode, number>;
 
 /** Sample profile — matches the figure used in the phase-0 sketch. */
 export const SAMPLE_PROFILE: Profile = {

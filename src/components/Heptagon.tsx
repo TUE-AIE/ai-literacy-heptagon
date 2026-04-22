@@ -38,10 +38,26 @@ interface HeptagonProps {
   interactive?: boolean;
   /** Aggregate range: if supplied, renders a min–max band behind the mean polygon. */
   band?: HeptagonBand;
+  /**
+   * Target range band: the desired role-target min..max polygon. Drawn with
+   * dashed stroke and light fill between the two polygons; honours "anywhere
+   * in this range is fine" for role targets that have ranges like B–I.
+   */
+  targetBand?: HeptagonBand;
   /** Comparison overlays. When non-empty, `profile` is not rendered; each overlay
    *  is drawn as its own polygon in the given colour. */
   overlays?: HeptagonOverlay[];
-  /** Render numeric delta-to-baseline badges at each vertex (level − 1). */
+  /**
+   * Delta badge mode at each vertex:
+   *   "off"      no badges (default)
+   *   "baseline" level − 1 (Beginner baseline)
+   *   "target"   level − targetMidpoint(dim); requires targetBand
+   */
+  deltaMode?: "off" | "baseline" | "target";
+  /**
+   * Legacy alias for `deltaMode === "baseline"`. Prefer `deltaMode` for new code.
+   * Kept so existing callers (compare / diff modes in Aggregator) keep working.
+   */
   showDeltas?: boolean;
   /** Suppress rendering of vertex dots (useful for tiny sparkline heptagons). */
   hideVertices?: boolean;
@@ -68,7 +84,9 @@ export const Heptagon = forwardRef<HeptagonHandle, HeptagonProps>(function Hepta
     showGapMarginalia = true,
     interactive = true,
     band,
+    targetBand,
     overlays,
+    deltaMode = "off",
     showDeltas = false,
     hideVertices = false,
     width = W_DEFAULT,
@@ -76,6 +94,9 @@ export const Heptagon = forwardRef<HeptagonHandle, HeptagonProps>(function Hepta
   },
   ref
 ) {
+  // Normalise legacy prop. showDeltas has precedence only when deltaMode is default.
+  const effectiveDelta: "off" | "baseline" | "target" =
+    deltaMode !== "off" ? deltaMode : (showDeltas ? "baseline" : "off");
   const svgRef   = useRef<SVGSVGElement>(null);
   const sceneRef = useRef<SVGGElement>(null);
   const tipRef   = useRef<HTMLDivElement>(null);
@@ -86,9 +107,9 @@ export const Heptagon = forwardRef<HeptagonHandle, HeptagonProps>(function Hepta
   useEffect(() => {
     if (!sceneRef.current) return;
     const scene = d3.select(sceneRef.current);
-    draw(scene, profile, t, mode, highlightDim, showGapMarginalia, interactive, band, overlays, showDeltas, hideVertices, tipRef.current);
+    draw(scene, profile, t, mode, highlightDim, showGapMarginalia, interactive, band, targetBand, overlays, effectiveDelta, hideVertices, tipRef.current);
     return () => { scene.selectAll("*").interrupt(); };
-  }, [profile, i18n.language, revealNonce, mode, highlightDim, showGapMarginalia, interactive, band, overlays, showDeltas, hideVertices, t]);
+  }, [profile, i18n.language, revealNonce, mode, highlightDim, showGapMarginalia, interactive, band, targetBand, overlays, effectiveDelta, hideVertices, t]);
 
   const descParts = DIMENSIONS.map((d) => {
     const level = profile[d.code] ?? 0;
@@ -159,8 +180,9 @@ function draw(
   showGapMarginalia: boolean,
   interactive: boolean,
   band: { min: HeptagonProfile; max: HeptagonProfile } | undefined,
+  targetBand: { min: HeptagonProfile; max: HeptagonProfile } | undefined,
   overlays: HeptagonOverlay[] | undefined,
-  showDeltas: boolean,
+  deltaMode: "off" | "baseline" | "target",
   hideVertices: boolean,
   tipEl: HTMLDivElement | null
 ): void {
@@ -281,6 +303,33 @@ function draw(
     }
   }
 
+  /* 5c — target band (role archetype target range): dashed annular band. */
+  if (targetBand) {
+    const tMinPts: [number, number][] = DIMENSIONS.map((d, i) => pt(i, levelR(targetBand.min[d.code] ?? 0)));
+    const tMaxPts: [number, number][] = DIMENSIONS.map((d, i) => pt(i, levelR(targetBand.max[d.code] ?? 0)));
+    const tBandPath =
+      "M " + tMaxPts.map(p => p.join(",")).join(" L ") + " Z " +
+      "M " + tMinPts.map(p => p.join(",")).join(" L ") + " Z";
+    const targetEl = scene.append("path")
+      .attr("class", "target-band")
+      .attr("fill-rule", "evenodd")
+      .attr("d", tBandPath);
+    // Also draw the upper bound outline as a dashed polygon so a point target
+    // (min === max) remains visible (since the annulus collapses to nothing).
+    const outlineEl = scene.append("polygon")
+      .attr("class", "target-outline")
+      .attr("points", polyStr(tMaxPts));
+    if (animate) {
+      targetEl.attr("opacity", 0)
+        .transition().delay(2000).duration(600).attr("opacity", 0.55);
+      outlineEl.attr("opacity", 0)
+        .transition().delay(2000).duration(600).attr("opacity", 0.8);
+    } else {
+      targetEl.attr("opacity", 0.55);
+      outlineEl.attr("opacity", 0.8);
+    }
+  }
+
   /* 6a — overlay comparison: multiple polygons in distinct colours, no bleed */
   if (overlays && overlays.length > 0) {
     overlays.forEach((ov, idx) => {
@@ -370,13 +419,20 @@ function draw(
       .attr("r", 3.8);
   }
 
-  /* 7b — delta badges (level − 1 vs Beginner baseline) */
-  if (showDeltas) {
+  /* 7b — delta badges vs a reference (baseline or role target midpoint). */
+  if (deltaMode !== "off") {
     DIMENSIONS.forEach((d, i) => {
       const level = profile[d.code];
       if (typeof level !== "number") return;
-      const delta = level - 1;
-      // place badge just outside the vertex, along the axis
+      let reference: number;
+      if (deltaMode === "target" && targetBand) {
+        const lo = targetBand.min[d.code] ?? 1;
+        const hi = targetBand.max[d.code] ?? lo;
+        reference = (lo + hi) / 2;
+      } else {
+        reference = 1; // Beginner baseline
+      }
+      const delta = level - reference;
       const [bx, by] = pt(i, levelR(level) + 16);
       const rounded = Math.round(delta * 10) / 10;
       const text = (rounded > 0 ? "+" : "") + rounded.toFixed(rounded % 1 === 0 ? 0 : 1);

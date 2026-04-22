@@ -18,6 +18,7 @@ interface LandingProps {
 export function Landing({ onStart, onResume, onOpenAggregator, draft }: LandingProps) {
   const { t } = useTranslation();
   const [reveal, setReveal] = useState(0);
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   const notes = [
     { title: t("margin.reading.title"),     body: t("margin.reading.body") },
@@ -64,7 +65,12 @@ export function Landing({ onStart, onResume, onOpenAggregator, draft }: LandingP
                 {t("landing.cta.aggregator")}
               </button>
             )}
+            <button className="btn btn-ghost" type="button" onClick={() => setAboutOpen((v) => !v)} aria-expanded={aboutOpen}>
+              {t("landing.cta.about")}
+            </button>
           </div>
+
+          {aboutOpen && <OnboardingBlock onClose={() => setAboutOpen(false)} />}
 
           <div className="landing-notes">
             <div><h4>{t("landing.notes.time.title")}</h4>    <p>{t("landing.notes.time.body")}</p></div>
@@ -80,5 +86,51 @@ export function Landing({ onStart, onResume, onOpenAggregator, draft }: LandingP
         {t("app.replay")}
       </button>
     </>
+  );
+}
+
+/** The expandable "About this tool" block — onboarding copy from the mapping doc. */
+function OnboardingBlock({ onClose }: { onClose: () => void }) {
+  const { t } = useTranslation();
+  return (
+    <section className="onboarding-block" aria-label={t("landing.cta.about")}>
+      <article>
+        <h3>{t("onboarding.why.title")}</h3>
+        <p>{t("onboarding.why.body.1")}</p>
+        <p>{t("onboarding.why.body.2")}</p>
+        <p>{t("onboarding.why.body.3")}</p>
+      </article>
+
+      <article>
+        <h3>{t("onboarding.reasons.title")}</h3>
+        <h4>{t("onboarding.reasons.1.title")}</h4>
+        <p>{t("onboarding.reasons.1.body")}</p>
+        <h4>{t("onboarding.reasons.2.title")}</h4>
+        <p>{t("onboarding.reasons.2.body")}</p>
+        <h4>{t("onboarding.reasons.3.title")}</h4>
+        <p>{t("onboarding.reasons.3.body")}</p>
+      </article>
+
+      <article className="onboarding-not">
+        <h3>{t("onboarding.notATest.title")}</h3>
+        <p>{t("onboarding.notATest.body")}</p>
+      </article>
+
+      <article>
+        <h3>{t("onboarding.approach.title")}</h3>
+        <p>{t("onboarding.approach.body")}</p>
+      </article>
+
+      <article>
+        <h3>{t("onboarding.next.title")}</h3>
+        <p>{t("onboarding.next.body")}</p>
+      </article>
+
+      <div className="onboarding-close">
+        <button type="button" className="btn btn-ghost" onClick={onClose}>
+          {t("onboarding.close")}
+        </button>
+      </div>
+    </section>
   );
 }

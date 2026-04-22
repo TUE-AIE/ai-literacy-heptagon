@@ -2,6 +2,7 @@ import { FormEvent, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Subject } from "../state/types";
 import { PRODUCT_AREAS } from "../content/org";
+import { ROLES, RoleKey } from "../content/targetProfiles";
 
 interface ScopeFormProps {
   initial: Subject;
@@ -119,6 +120,24 @@ export function ScopeForm({ initial, onSubmit, onBack }: ScopeFormProps) {
             />
           </div>
         )}
+
+        <div className="field">
+          <label htmlFor="roleArchetype">{t("scope.field.roleArchetype")}</label>
+          <p className="field-hint">{t("scope.field.roleArchetype.body")}</p>
+          <select
+            id="roleArchetype"
+            value={subject.roleArchetype ?? "other"}
+            onChange={(e) => {
+              const v = e.target.value as RoleKey;
+              update("roleArchetype", v === "other" ? undefined : v);
+            }}
+          >
+            <option value="other">{t("scope.field.roleArchetype.none")}</option>
+            {ROLES.map((r) => (
+              <option key={r.key} value={r.key}>{t(`roles.${r.i18nKey}.name`)}</option>
+            ))}
+          </select>
+        </div>
 
         <div className="scope-actions">
           <button type="button" className="btn btn-ghost" onClick={onBack}>

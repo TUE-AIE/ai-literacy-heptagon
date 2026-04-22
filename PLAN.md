@@ -293,6 +293,7 @@ This lives in a separate `content/` JSON so copy edits don't require a redeploy 
 2. **Phase 1 — Assessment Tool MVP ✅ (done, 2026-04-17):** Full flow ships — landing with paper citation, scope form, 7-step assessment with live mini-plate sidebar and keyboard navigation, results view with per-dimension cards and JSON + PNG exports. Draft auto-saves to `localStorage` and resumes from landing. Level-to-ring mapping corrected so Unaware sits on the innermost ring (matching paper Figure 3) and the baseline band is the annulus between Unaware and Beginner. Vertex hover tooltips show Bloom anchors. All copy EN + NL. See §15.
 3. **Phase 2 — Aggregator Tool MVP ✅ (done, 2026-04-17):** Drag-and-drop JSON import with schema validation and duplicate detection. Hierarchy LIS → Product Area → Team → Individual with breadcrumb navigation. Aggregate heptagon at every level (fractional mean polygon + translucent min–max band). Child grid with mini heptagons; each card shows aggregate shape, count, and a below-baseline warning. Privacy min-n rule hides individual profiles at team level below 3 profiles; toggleable above. Invalid imports produce a plain-English "Files skipped" panel. See §16.
 4. **Phase 3 — Polish ✅ (done, 2026-04-17):** Compare mode (select up to 3 sibling nodes and overlay their aggregate polygons in distinct colours — TU/e red, deep blue, forest green — with a legend and numbered badges on selected cards). Baseline-diff mode: numeric delta badges at every vertex with ochre below baseline, terracotta at, warm-grey above, and a legend at the foot of the plate. A11y essentials: `aria-current` on breadcrumb, `aria-live` on children grid, `role="tablist"` on the mode strip, `:focus-visible` rings on every interactive element. See §17.
+5. **Phase 4 — Nuanced scoring + role targets ✅ (done, 2026-04-22):** Bumps assessment from one abstract question per dimension to **four behavioural sub-questions** (28 total) with first-person anchors sourced from the AI Literacy Team's mapping document. Dimension score becomes the **fractional mean** of its sub-scores; the heptagon already rendered fractional values so this required no visual change. Introduces **six LIS role archetypes** with target profiles (ranges like B–I, I–E honoured as translucent bands with midpoint deltas). Adds the "About this tool" onboarding block (Why / Reasons / What this is not / How to approach / What happens next). **Schema bumped to v2.0** — v1.0 exports are now rejected with a specific upgrade message. See §18.
 5. **Phase 4 — Validation:** pilot with 1 Product Area, gather feedback, iterate on question wording and growth suggestions.
 
 ## 13. Phase 0 — what shipped
@@ -457,6 +458,49 @@ Chosen for reliable contrast against the warm paper ground and against each othe
 - **Onboarding explainer video/tour.** Moderate value; the current landing notes cover the basics.
 - **Self-hosted fonts.** Defer until the LIS CSP actually blocks Google Fonts at deploy time.
 - **Full screen-reader walkthrough.** A11y essentials are in place; a formal VoiceOver/NVDA audit is cheaper after the content pass.
+
+## 18. Phase 4 — what shipped
+
+```
+src/
+├── content/
+│   ├── questions.ts             +SUB_QUESTIONS map, SUBS_PER_DIM, meanOfSubScores()
+│   └── targetProfiles.ts        +6 LIS role archetypes with ranges + rationales
+├── components/Heptagon.tsx      +targetBand (dashed annulus + outer dashed outline)
+│                                 +deltaMode "off" | "baseline" | "target"
+├── views/
+│   ├── Assessment.tsx            7 dimension pages × 4 questions each, stacked radios
+│   ├── Results.tsx               Fractional mean + sub-score breakdown per dim card
+│   │                             + target overlay + "deltas vs baseline" / "vs role target" toggle
+│   ├── ScopeForm.tsx             +optional "LIS role archetype" dropdown
+│   ├── Aggregator.tsx            Auto-overlays role target when all profiles share a role
+│   └── Landing.tsx               Collapsible "About this tool" block with onboarding copy
+├── export/json.ts                Schema v2.0: subScores[4] per dimension; roleArchetype on subject
+├── aggregator/validate.ts        v1.0 → specific "please retake" error; v2.0 subScores validated
+├── state/
+│   ├── types.ts                   DraftProfile → DraftSubScores (sub-score arrays)
+│   └── draft.ts                   draft key bumped to ailh.draft.v2, version-stamped
+└── locales/{en,nl}.json          +28 sub-questions × 4 anchors, +6 role names + descriptions,
+                                   +onboarding section (why / reasons / not-a-test / approach / next)
+```
+
+**Verified end-to-end in the preview:**
+- Individual flow: picks role "Information Literacy & Teaching Support" on the scope form → answers 28 questions → results page shows the red polygon, a dashed target band (the role's point-target profile), and per-vertex delta badges relative to the role target midpoint. SIU came out at 0.50 with a target of Expert (3) → delta "−2.5" rendered in ochre. Mean values round-trip correctly to the JSON export (e.g. TKS = 1.75 from subScores [2,1,2,2]).
+- Results view delta-mode toggle switches between *off*, *vs baseline*, and *vs role target* (last option only appears when a role was selected).
+- Aggregator rejects v1.0 JSONs with "This is a v1.0 export. The assessment has been upgraded to v2.0 (four sub-questions per dimension); please ask the respondent to re-run the assessment." Dropzone hint updated to "…JSON exports (schema v2.0)…".
+- Landing → *About this tool* expands into the full onboarding block (Why / Reasons / What this is not / How to approach / What happens next), typeset inside a double-rule plate with the "What this is not" article set off by horizontal rules and terracotta header.
+
+**Notable implementation choices:**
+- **Ranges as bands + midpoint deltas.** A target of B–I renders as a dashed annulus between level 1 and level 2; numeric delta uses the midpoint (1.5). Honours "anywhere in this range is fine" without forcing a single number.
+- **No v1 migration.** Simpler, and v1 drafts / exports can't represent sub-score detail. Old drafts orphan under `ailh.draft.v1`; the new flow uses `ailh.draft.v2` keyed by schema version.
+- **Target-band rendering reuses the `band` annulus path** — one extra layer with different styling, no new geometry code. Point targets (min === max) get an explicit dashed outer outline so the annulus-collapse doesn't hide them.
+- **Role archetype auto-overlay in the aggregator**: when *every* profile at the current node shares a role (Set of role keys has size 1), its target band is drawn automatically; mixed-role groups show no overlay because there's no unambiguous target.
+- **Dutch translations are first-pass author drafts and need AI Literacy Team review** before release. Structure is set so review-and-merge is a single-file edit.
+
+**Deliberate deferrals (→ future):**
+- **Team-target setter tool.** A simple 7-slider UI for a team lead to set their team's own target and export `team-target.json` for the aggregator. Not blocking; role archetypes cover most cases.
+- **Printable team-reflection session guide.** The seven discussion prompts from the mapping document would make a nice printable session sheet. Content exists; rendering is a static export job.
+- **Content pass on the Dutch translations.** Structurally done, but a native speaker in the AI Literacy Team should review before wide release.
 
 ## 14. Canonical org hierarchy (LIS)
 

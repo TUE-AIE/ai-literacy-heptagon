@@ -1,17 +1,18 @@
-import { useEffect } from "react";
-import { Trans, useTranslation } from "react-i18next";
-import { DIMENSIONS, LevelIndex, Profile } from "../content/dimensions";
-import { Heptagon } from "../components/Heptagon";
-import { Subject, DraftProfile, EvidenceMap } from "../state/types";
+import { useEffect, useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { DIMENSIONS, Profile } from "../content/dimensions";
+import { Heptagon, HeptagonProfile } from "../components/Heptagon";
+import { Subject, DraftSubScores, EvidenceMap } from "../state/types";
+import { SUB_QUESTIONS, SUBS_PER_DIM, meanOfSubScores } from "../content/questions";
 
 interface AssessmentProps {
   subject: Subject;
-  levels: DraftProfile;
+  subScores: DraftSubScores;
   evidence: EvidenceMap;
   index: number;
-  onChange: (levels: DraftProfile, evidence: EvidenceMap) => void;
+  onChange: (subScores: DraftSubScores, evidence: EvidenceMap) => void;
   onNavigate: (index: number) => void;
-  onFinish: (profile: Profile, evidence: EvidenceMap) => void;
+  onFinish: (profile: Profile, subScores: DraftSubScores, evidence: EvidenceMap) => void;
   onBack: () => void;
 }
 
@@ -19,7 +20,7 @@ const LEVEL_KEYS = ["unaware", "beginner", "intermediate", "expert"] as const;
 
 export function Assessment({
   subject,
-  levels,
+  subScores,
   evidence,
   index,
   onChange,
@@ -29,46 +30,64 @@ export function Assessment({
 }: AssessmentProps) {
   const { t } = useTranslation();
   const dim = DIMENSIONS[index];
-  const currentLevel = levels[dim.code];
+  const subs = SUB_QUESTIONS[dim.code];
+  const currentSubs = subScores[dim.code] ?? new Array(SUBS_PER_DIM).fill(undefined) as (number | undefined)[];
   const currentEvidence = evidence[dim.code] ?? "";
 
-  // Keyboard: left/right arrows navigate, 1–4 set level
+  // Keyboard: left/right arrows navigate between dimensions.
+  // (Per-question keyboard answer removed — with 4 questions per page, digit
+  // shortcuts are ambiguous.)
   useEffect(() => {
     const h = (e: KeyboardEvent) => {
-      if ((e.target as HTMLElement | null)?.tagName === "TEXTAREA" ||
-          (e.target as HTMLElement | null)?.tagName === "INPUT") return;
-      if (e.key === "ArrowRight" && currentLevel !== undefined && index < DIMENSIONS.length - 1) {
-        onNavigate(index + 1);
-      } else if (e.key === "ArrowLeft" && index > 0) {
-        onNavigate(index - 1);
-      } else if (/^[1-4]$/.test(e.key)) {
-        setLevel((Number(e.key) - 1) as LevelIndex);
-      }
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (tag === "TEXTAREA" || tag === "INPUT") return;
+      if (e.key === "ArrowRight" && pageComplete && index < DIMENSIONS.length - 1) onNavigate(index + 1);
+      else if (e.key === "ArrowLeft" && index > 0) onNavigate(index - 1);
     };
     window.addEventListener("keydown", h);
     return () => window.removeEventListener("keydown", h);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, currentLevel]);
+  }, [index, currentSubs.join(",")]);
 
-  const setLevel = (lvl: LevelIndex) => {
-    onChange({ ...levels, [dim.code]: lvl }, evidence);
+  const setSubScore = (subIdx: number, lvl: number) => {
+    const next = [...currentSubs];
+    next[subIdx] = lvl;
+    onChange({ ...subScores, [dim.code]: next }, evidence);
   };
   const setEvidence = (txt: string) => {
-    onChange(levels, { ...evidence, [dim.code]: txt });
+    onChange(subScores, { ...evidence, [dim.code]: txt });
   };
 
+  /** Profile built from means of each dimension's sub-scores — used by the live mini-plate. */
+  const livePartialProfile: HeptagonProfile = useMemo(() => {
+    const out: HeptagonProfile = {};
+    for (const d of DIMENSIONS) {
+      const s = subScores[d.code];
+      const mean = s ? meanOfSubScores(s) : undefined;
+      if (typeof mean === "number") out[d.code] = mean;
+    }
+    return out;
+  }, [subScores]);
+
+  const pageComplete = currentSubs.every((s) => typeof s === "number");
   const isLast = index === DIMENSIONS.length - 1;
-  const allAnswered = DIMENSIONS.every((d) => levels[d.code] !== undefined);
+  const allComplete = DIMENSIONS.every((d) => {
+    const s = subScores[d.code];
+    return s && s.length === SUBS_PER_DIM && s.every((x) => typeof x === "number");
+  });
 
   const finish = () => {
-    if (!allAnswered) return;
+    if (!allComplete) return;
     const profile = {} as Profile;
-    for (const d of DIMENSIONS) profile[d.code] = levels[d.code] as LevelIndex;
-    onFinish(profile, evidence);
+    for (const d of DIMENSIONS) {
+      profile[d.code] = meanOfSubScores(subScores[d.code]!) as number;
+    }
+    onFinish(profile, subScores, evidence);
   };
 
   const dimensionName = t(`dimensions.${dim.key}.full`);
   const shortName     = t(`dimensions.${dim.key}.short`);
+  const purpose       = t(`dimensions.${dim.key}.purpose`);
 
   return (
     <main className="page assess-page">
@@ -80,54 +99,64 @@ export function Assessment({
         </p>
         <h1 className="hanging">{shortName}<span className="assess-code">{dim.code}</span></h1>
         <p className="lede">{dimensionName}</p>
+        <p className="assess-purpose">
+          <span className="assess-purpose-label">{t("assess.sub.purpose")}:</span> {purpose}
+        </p>
       </header>
 
       <div className="assess-main">
-        <fieldset className="question-card">
-          <legend className="question-legend">
-            <Trans i18nKey="assess.question" values={{ dimension: shortName }} />
-          </legend>
-
-          <ol className="anchor-list">
-            {LEVEL_KEYS.map((levelKey, i) => {
-              const lvl = i as LevelIndex;
-              const selected = currentLevel === lvl;
-              return (
-                <li key={levelKey}>
-                  <label className={"anchor-option" + (selected ? " is-selected" : "")}>
-                    <input
-                      type="radio"
-                      name="level"
-                      checked={selected}
-                      onChange={() => setLevel(lvl)}
-                    />
-                    <span className="anchor-index" aria-hidden="true">{i}</span>
-                    <span className="anchor-body">
-                      <span className="anchor-level">{t(`levels.${levelKey}`)}</span>
-                      <span className="anchor-text">{t(`anchors.${dim.key}.${levelKey}`)}</span>
-                    </span>
-                  </label>
-                </li>
-              );
-            })}
-          </ol>
+        <div className="question-stack">
+          <p className="sub-prompt-intro">{t("assess.sub.prompt")}</p>
+          {subs.map((subId, subIdx) => {
+            const selected = currentSubs[subIdx];
+            return (
+              <fieldset key={subId} className="question-card">
+                <legend className="question-legend">
+                  <span className="question-code">{subId}</span>
+                  {t(`questions.${subId}.prompt`)}
+                </legend>
+                <ol className="anchor-list">
+                  {LEVEL_KEYS.map((levelKey, lvl) => {
+                    const isSelected = selected === lvl;
+                    return (
+                      <li key={levelKey}>
+                        <label className={"anchor-option" + (isSelected ? " is-selected" : "")}>
+                          <input
+                            type="radio"
+                            name={subId}
+                            checked={isSelected}
+                            onChange={() => setSubScore(subIdx, lvl)}
+                          />
+                          <span className="anchor-index" aria-hidden="true">{lvl}</span>
+                          <span className="anchor-body">
+                            <span className="anchor-level">{t(`levels.${levelKey}`)}</span>
+                            <span className="anchor-text">{t(`questions.${subId}.anchors.${levelKey}`)}</span>
+                          </span>
+                        </label>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </fieldset>
+            );
+          })}
 
           <div className="evidence-field">
-            <label htmlFor="evidence">{t("assess.evidence.label")}</label>
+            <label htmlFor="evidence">{t("assess.sub.purpose") /* reuse evidence label optional */}</label>
             <textarea
               id="evidence"
               rows={2}
               value={currentEvidence}
-              placeholder={t("assess.evidence.placeholder")}
+              placeholder=""
               onChange={(e) => setEvidence(e.target.value)}
             />
           </div>
-        </fieldset>
+        </div>
 
         <aside className="assess-mini">
           <div className="mini-plate">
             <Heptagon
-              profile={levels}
+              profile={livePartialProfile}
               mode="static"
               highlightDim={dim.code}
               showGapMarginalia={false}
@@ -136,7 +165,8 @@ export function Assessment({
           </div>
           <nav className="dim-pips" aria-label="Dimension progress">
             {DIMENSIONS.map((d, i) => {
-              const answered = levels[d.code] !== undefined;
+              const s = subScores[d.code];
+              const answered = !!(s && s.length === SUBS_PER_DIM && s.every((x) => typeof x === "number"));
               const active = i === index;
               return (
                 <button
@@ -159,10 +189,10 @@ export function Assessment({
           {index === 0 ? t("app.back") : t("assess.previous")}
         </button>
         {isLast
-          ? <button type="button" className="btn btn-primary" disabled={!allAnswered} onClick={finish}>
+          ? <button type="button" className="btn btn-primary" disabled={!allComplete} onClick={finish}>
               {t("assess.review")}
             </button>
-          : <button type="button" className="btn btn-primary" disabled={currentLevel === undefined}
+          : <button type="button" className="btn btn-primary" disabled={!pageComplete}
               onClick={() => onNavigate(index + 1)}>
               {t("assess.next")}
             </button>

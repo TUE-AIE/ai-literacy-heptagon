@@ -5,9 +5,10 @@ import { ScopeForm } from "./views/ScopeForm";
 import { Assessment } from "./views/Assessment";
 import { Results } from "./views/Results";
 import { Aggregator } from "./views/Aggregator";
-import { DraftProfile, EMPTY_SUBJECT, Subject, View } from "./state/types";
+import { DraftSubScores, EMPTY_SUBJECT, Subject, View } from "./state/types";
 import { loadDraft, saveDraft, clearDraft } from "./state/draft";
 import { DIMENSIONS } from "./content/dimensions";
+import { SUBS_PER_DIM } from "./content/questions";
 
 export default function App() {
   const [view, setView] = useState<View>({ kind: "landing" });
@@ -17,8 +18,9 @@ export default function App() {
   useEffect(() => {
     if (view.kind === "assess") {
       saveDraft({
+        version: "2.0",
         subject: view.subject,
-        levels: view.levels,
+        subScores: view.subScores,
         evidence: view.evidence,
         updatedAt: new Date().toISOString()
       });
@@ -37,9 +39,9 @@ export default function App() {
           onResume={(d) => setView({
             kind: "assess",
             subject: d.subject,
-            levels: d.levels,
+            subScores: d.subScores,
             evidence: d.evidence,
-            index: firstUnansweredIndex(d.levels)
+            index: firstUnansweredIndex(d.subScores)
           })}
           onStart={(mode) => {
             const subject: Subject = { ...EMPTY_SUBJECT, scope: mode };
@@ -66,7 +68,7 @@ export default function App() {
             setView({
               kind: "assess",
               subject,
-              levels: {},
+              subScores: {},
               evidence: {},
               index: 0
             })
@@ -82,18 +84,18 @@ export default function App() {
         <LanguageToggle />
         <Assessment
           subject={view.subject}
-          levels={view.levels}
+          subScores={view.subScores}
           evidence={view.evidence}
           index={view.index}
-          onChange={(levels, evidence) =>
-            setView({ ...view, levels, evidence })
+          onChange={(subScores, evidence) =>
+            setView({ ...view, subScores, evidence })
           }
           onNavigate={(index) => setView({ ...view, index })}
           onBack={() => setView({ kind: "scope", subject: view.subject })}
-          onFinish={(profile, evidence) => {
+          onFinish={(profile, subScores, evidence) => {
             clearDraft();
             setDraftOnDisk(null);
-            setView({ kind: "results", subject: view.subject, profile, evidence });
+            setView({ kind: "results", subject: view.subject, profile, subScores, evidence });
           }}
         />
       </>
@@ -107,6 +109,7 @@ export default function App() {
       <Results
         subject={view.subject}
         profile={view.profile}
+        subScores={view.subScores}
         evidence={view.evidence}
         onStartOver={() => setView({ kind: "landing" })}
       />
@@ -114,9 +117,12 @@ export default function App() {
   );
 }
 
-function firstUnansweredIndex(levels: DraftProfile): number {
+/** Find the first dimension that doesn't have all four sub-scores filled. */
+function firstUnansweredIndex(subScores: DraftSubScores): number {
   for (let i = 0; i < DIMENSIONS.length; i++) {
-    if (levels[DIMENSIONS[i].code] === undefined) return i;
+    const subs = subScores[DIMENSIONS[i].code] ?? [];
+    const complete = subs.length === SUBS_PER_DIM && subs.every((s) => typeof s === "number");
+    if (!complete) return i;
   }
   return DIMENSIONS.length - 1;
 }
