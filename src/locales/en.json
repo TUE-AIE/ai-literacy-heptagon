@@ -70,6 +70,7 @@
     "field.productArea.placeholder": "Select…",
     "field.team": "Team",
     "field.team.placeholder": "Select…",
+    "field.team.other": "Other — not part of a team",
     "begin": "Begin assessment"
   },
   "assess": {

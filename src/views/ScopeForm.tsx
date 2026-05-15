@@ -97,6 +97,7 @@ export function ScopeForm({ initial, onSubmit, onBack }: ScopeFormProps) {
                 {tm.name}{tm.truncated ? "…" : ""}
               </option>
             ))}
+            <option value="Other">{t("scope.field.team.other")}</option>
           </select>
         </div>
 

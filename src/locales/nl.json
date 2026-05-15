@@ -70,6 +70,7 @@
     "field.productArea.placeholder": "Kies…",
     "field.team": "Team",
     "field.team.placeholder": "Kies…",
+    "field.team.other": "Anders — niet onderdeel van een team",
     "begin": "Start evaluatie"
   },
   "assess": {
