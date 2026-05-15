@@ -1340,7 +1340,18 @@ svg.hept text.delta-neg  { fill: var(--gap-marker); font-weight: 500; }
   font-size: 14.5px;
   line-height: 1.5;
   color: var(--annotation);
+  margin: 0 0 8px 0;
+}
+.pilot-saving {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 14;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--baseline);
   margin: 0 0 16px 0;
+  padding: 8px 12px;
+  border-left: 2px solid var(--baseline);
+  background: color-mix(in srgb, var(--baseline) 6%, transparent);
 }
 .pilot-clarity {
   border: none;

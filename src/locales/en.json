@@ -97,6 +97,7 @@
   "pilotFeedback": {
     "heading": "Help us improve this tool",
     "body": "This is a pilot version. Two quick questions, both optional.",
+    "savingNotice": "Your feedback is only sent when you download the JSON file below — fill it in before exporting, otherwise it will be lost.",
     "clarity.label": "Were the questions clear?",
     "clarity.yes": "Yes",
     "clarity.somewhat": "Somewhat",

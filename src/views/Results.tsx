@@ -105,6 +105,37 @@ export function Results({ subject, profile, subScores, evidence, onStartOver }: 
       </MarginSlot>
 
       <section className="results-block">
+        <section className="pilot-feedback">
+          <h3>{t("pilotFeedback.heading")}</h3>
+          <p className="pilot-body">{t("pilotFeedback.body")}</p>
+          <p className="pilot-saving">{t("pilotFeedback.savingNotice")}</p>
+          <fieldset className="pilot-clarity">
+            <legend>{t("pilotFeedback.clarity.label")}</legend>
+            {(["yes", "somewhat", "no"] as const).map((opt) => (
+              <label key={opt} className={"pilot-choice" + (pilotClarity === opt ? " is-selected" : "")}>
+                <input
+                  type="radio"
+                  name="pilot-clarity"
+                  value={opt}
+                  checked={pilotClarity === opt}
+                  onChange={() => setPilotClarity(opt)}
+                />
+                <span>{t(`pilotFeedback.clarity.${opt}`)}</span>
+              </label>
+            ))}
+          </fieldset>
+          <div className="pilot-notes-field">
+            <label htmlFor="pilot-notes">{t("pilotFeedback.notes.label")}</label>
+            <textarea
+              id="pilot-notes"
+              rows={3}
+              placeholder={t("pilotFeedback.notes.placeholder")}
+              value={pilotNotes}
+              onChange={(e) => setPilotNotes(e.target.value)}
+            />
+          </div>
+        </section>
+
         <h2 className="landing-heading">{t("results.heading")}</h2>
         <p className="landing-body">{t("results.body")}</p>
 
@@ -175,36 +206,6 @@ export function Results({ subject, profile, subScores, evidence, onStartOver }: 
             );
           })}
         </ol>
-
-        <section className="pilot-feedback">
-          <h3>{t("pilotFeedback.heading")}</h3>
-          <p className="pilot-body">{t("pilotFeedback.body")}</p>
-          <fieldset className="pilot-clarity">
-            <legend>{t("pilotFeedback.clarity.label")}</legend>
-            {(["yes", "somewhat", "no"] as const).map((opt) => (
-              <label key={opt} className={"pilot-choice" + (pilotClarity === opt ? " is-selected" : "")}>
-                <input
-                  type="radio"
-                  name="pilot-clarity"
-                  value={opt}
-                  checked={pilotClarity === opt}
-                  onChange={() => setPilotClarity(opt)}
-                />
-                <span>{t(`pilotFeedback.clarity.${opt}`)}</span>
-              </label>
-            ))}
-          </fieldset>
-          <div className="pilot-notes-field">
-            <label htmlFor="pilot-notes">{t("pilotFeedback.notes.label")}</label>
-            <textarea
-              id="pilot-notes"
-              rows={3}
-              placeholder={t("pilotFeedback.notes.placeholder")}
-              value={pilotNotes}
-              onChange={(e) => setPilotNotes(e.target.value)}
-            />
-          </div>
-        </section>
 
         {hasAnyResources && (
           <section className="resources-block">

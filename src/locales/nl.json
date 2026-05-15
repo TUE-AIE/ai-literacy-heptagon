@@ -97,6 +97,7 @@
   "pilotFeedback": {
     "heading": "Help ons dit instrument te verbeteren",
     "body": "Dit is een pilotversie. Twee korte vragen, beide optioneel.",
+    "savingNotice": "Je feedback wordt alleen meegestuurd wanneer je het JSON-bestand hieronder downloadt — vul het eerst in, anders gaat het verloren.",
     "clarity.label": "Waren de vragen duidelijk?",
     "clarity.yes": "Ja",
     "clarity.somewhat": "Enigszins",
