@@ -87,21 +87,19 @@ export function Assessment({
 
   const dimensionName = t(`dimensions.${dim.key}.full`);
   const shortName     = t(`dimensions.${dim.key}.short`);
-  const purpose       = t(`dimensions.${dim.key}.purpose`);
+  const description   = t(`dimensions.${dim.key}.description`);
 
   return (
     <main className="page assess-page">
       <header>
         <p className="kicker">
-          <span>{subject.scope === "team" ? subject.name || t("scope.field.name.placeholder.team") : subject.name || t("scope.individual.title")}</span>
+          <span>{subject.name || t("scope.individual.title")}</span>
           <span className="dot">·</span>
           <span>{t("assess.progress", { current: index + 1, total: DIMENSIONS.length })}</span>
         </p>
         <h1 className="hanging">{shortName}<span className="assess-code">{dim.code}</span></h1>
         <p className="lede">{dimensionName}</p>
-        <p className="assess-purpose">
-          <span className="assess-purpose-label">{t("assess.sub.purpose")}:</span> {purpose}
-        </p>
+        <p className="dim-description">{description}</p>
       </header>
 
       <div className="assess-main">
@@ -129,7 +127,6 @@ export function Assessment({
                           />
                           <span className="anchor-index" aria-hidden="true">{lvl}</span>
                           <span className="anchor-body">
-                            <span className="anchor-level">{t(`levels.${levelKey}`)}</span>
                             <span className="anchor-text">{t(`questions.${subId}.anchors.${levelKey}`)}</span>
                           </span>
                         </label>
@@ -142,7 +139,7 @@ export function Assessment({
           })}
 
           <div className="evidence-field">
-            <label htmlFor="evidence">{t("assess.sub.purpose") /* reuse evidence label optional */}</label>
+            <label htmlFor="evidence">{t("assess.evidence.label")}</label>
             <textarea
               id="evidence"
               rows={2}

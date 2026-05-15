@@ -6,10 +6,14 @@ export type ValidationResult =
   | { ok: true;  doc: ExportDocument }
   | { ok: false; errors: string[] };
 
+/** Schema versions the aggregator can read. */
+const ACCEPTED_SCHEMA_VERSIONS = new Set(["2.0", "3.0"]);
+
 /**
- * Validate an unknown value against the v2.0 export schema. Errors are plain
- * English so a team lead can fix a broken file themselves. v1.0 exports are
- * recognised and rejected with a specific message pointing at the upgrade.
+ * Validate an unknown value against the export schema. The aggregator accepts
+ * both v2.0 (older team-mode exports) and v3.0 (individual-only) so facilitators
+ * can mix data during the V2→V3 transition. v1.0 is rejected with a specific
+ * upgrade message.
  */
 export function validateExport(raw: unknown): ValidationResult {
   const errors: string[] = [];
@@ -24,8 +28,8 @@ export function validateExport(raw: unknown): ValidationResult {
     return { ok: false, errors: [
       `This is a v1.0 export. The assessment has been upgraded to v${SCHEMA_VERSION} (four sub-questions per dimension); please ask the respondent to re-run the assessment.`
     ]};
-  } else if (r.schemaVersion !== SCHEMA_VERSION) {
-    errors.push(`Unknown schemaVersion "${r.schemaVersion}" (expected "${SCHEMA_VERSION}").`);
+  } else if (!ACCEPTED_SCHEMA_VERSIONS.has(r.schemaVersion)) {
+    errors.push(`Unknown schemaVersion "${r.schemaVersion}" (expected one of ${Array.from(ACCEPTED_SCHEMA_VERSIONS).map(v => `"${v}"`).join(", ")}).`);
   }
 
   if (r.heptagonVersion !== HEPTAGON_VERSION) {

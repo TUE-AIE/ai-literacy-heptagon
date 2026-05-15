@@ -3,8 +3,8 @@
     "kicker": "TU/e · Library & Information Services · AI Enablement Program",
     "title.line1": "De AI-geletterdheid",
     "title.line2": "Heptagon.",
-    "lede": "Zeven dimensies, vier niveaus, één figuur — een zelfevaluatie-instrument voor LIS, weergegeven als een interactieve publicatieplaat.",
-    "stamp": "v2.0 · 2026-04-22",
+    "lede": "Zeven dimensies, vier niveaus, één figuur — een zelfreflectie-instrument voor LIS, weergegeven als een interactieve publicatieplaat.",
+    "stamp": "v3.0 · 2026-05-15",
     "replay": "Herhaal reveal",
     "languageToggle.aria": "Taal wijzigen",
     "back": "Terug",
@@ -14,73 +14,69 @@
   },
   "landing": {
     "heading": "Waar staat AI-geletterdheid, hier, vandaag?",
-    "body": "Achtentwintig korte vragen over zeven dimensies leveren een genuanceerd profiel op. Houd het privé of deel het bestand met je teamlead — niets verlaat je browser tenzij je zelf exporteert.",
-    "cta.individual": "Evalueer mezelf",
-    "cta.team": "Evalueer mijn team",
+    "body": "Achtentwintig korte vragen over zeven dimensies leveren een genuanceerd profiel van je eigen AI-geletterdheid. Niets verlaat je browser tenzij je zelf exporteert.",
+    "cta.individual": "Start zelfreflectie",
     "cta.resume": "Concept hervatten",
-    "cta.aggregator": "Open aggregator",
-    "cta.about": "Over dit instrument",
+    "whatsNew": "Nieuw in v3 — herziene vragenset, bijgewerkt heptagon-diagram, verfijnde scoring, alleen individuele zelfreflectie.",
     "notes": {
       "time.title": "Tijd",
       "time.body": "Ongeveer 15 minuten. Eerlijk is belangrijker dan volledig — kies de optie die het best bij je dagelijkse praktijk past.",
       "privacy.title": "Privacy",
-      "privacy.body": "Geen account, geen tracking, geen server. Je antwoorden blijven in dit browsertabblad totdat je ze zelf downloadt.",
+      "privacy.body": "Geen account, geen tracking, geen server. Je antwoorden blijven in dit browsertabblad totdat je ze zelf downloadt. Als je je export deelt, worden individuele resultaten geaggregeerd gebruikt om trainings- en ontwikkelbehoeften in kaart te brengen.",
       "export.title": "Wat je eruit krijgt",
       "export.body": "Een JSON-bestand dat je kunt bewaren of delen, plus een gezette PNG van de heptagon-plaat voor rapporten en slides."
     }
   },
-  "onboarding": {
+  "intro": {
     "why.title": "Waarom brengen we AI-geletterdheid in LIS in kaart?",
-    "why.body.1": "Kunstmatige Intelligentie maakt een steeds groter deel uit van de manier waarop we onderwijs, onderzoek en open science aan de TU/e ondersteunen. Als Library & Information Services hebben we op veel manieren met AI te maken: advies aan medewerkers en studenten, tooling selecteren, diensten ontwerpen, juridische en ethische implicaties duiden en verantwoord gebruik ondersteunen.",
+    "why.body.1": "Kunstmatige Intelligentie maakt een steeds groter deel uit van hoe we onderwijs, onderzoek en bedrijfsvoering aan de TU/e ondersteunen. Als Library and Information Services hebben we op veel manieren met AI te maken: advies aan medewerkers en studenten, tooling selecteren, diensten ontwerpen, juridische en ethische implicaties duiden en verantwoord gebruik ondersteunen.",
     "why.body.2": "Tegelijkertijd raakt AI elke rol en dienst anders. Niet iedereen heeft hetzelfde expertiseniveau nodig, en van niemand wordt verwacht dat die overal expert in is.",
     "why.body.3": "Daarom gebruikt LIS de AI-geletterdheid Heptagon: als een gedeeld reflectie- en ontwikkelinstrument, niet als toets.",
+    "what.title": "Wat is de AI-geletterdheid Heptagon?",
+    "what.body.1": "De AI-geletterdheid Heptagon beschrijft AI-geletterdheid als zeven samenhangende dimensies: technisch begrip van AI, praktische toepassing van AI-tools, kritische evaluatie van AI-output, integratie van AI in werkprocessen en diensten, juridische en regelgevende kennis, ethisch redeneren en inzicht in maatschappelijke impact.",
+    "what.body.2": "Voor elke dimensie worden vier niveaus gehanteerd: Onbewust → Beginner → Gemiddeld → Expert. Deze niveaus beschrijven hoe je je in de praktijk tot AI verhoudt, niet hoe \"goed\" je bent.",
     "reasons.title": "Waarom vragen we je hierover te reflecteren?",
     "reasons.1.title": "1. Om te zien waar we nu staan",
     "reasons.1.body": "LIS heeft al veel kennis en ervaring in huis — maar die is ongelijk verdeeld over rollen, teams en diensten. Een gedeeld overzicht helpt sterktes, lacunes en overlappingen zichtbaar te maken.",
     "reasons.2.title": "2. Om duidelijk te maken waar we heen moeten",
     "reasons.2.body": "Verschillende LIS-product areas vragen om verschillende AI-geletterdheidsprofielen. Sommige rollen hebben diepere juridische en ethische expertise nodig; andere juist sterkere integratie- of toepassingsvaardigheden. Dit in kaart brengen helpt ons intentioneel te werken in plaats van reactief.",
     "reasons.3.title": "3. Om leren en ontwikkeling te ondersteunen",
-    "reasons.3.body": "De resultaten worden gebruikt om trainings- en ontwikkeltrajecten te sturen, teamdiscussies over rollen en verwachtingen te ondersteunen, en strategische keuzes rond AI binnen LIS te informeren. Het gaat om groei, niet om beoordeling.",
+    "reasons.3.body": "De resultaten worden gebruikt om trainings- en ontwikkeltrajecten te sturen, teamdiscussies over AI in onze rollen te ondersteunen, en strategische keuzes rond AI binnen LIS te informeren. Het gaat om groei, niet om beoordeling.",
     "notATest.title": "Wat dit niet is",
-    "notATest.body": "Om heel duidelijk te zijn: dit is geen functioneringsgesprek, geen test van intelligentie of competentie, geen middel om individuen of teams te rangschikken, en er is geen verwachting dat iedereen het Expert-niveau moet halen. Er is geen ideaal persoonlijk profiel.",
+    "notATest.body": "Om heel duidelijk te zijn: dit is geen functioneringsgesprek, niet verplicht, geen test van intelligentie of competentie, geen middel om individuen of teams te rangschikken, en er is geen verwachting dat iedereen het \"expert\"-niveau moet halen. Er is geen \"ideaal\" persoonlijk profiel.",
     "approach.title": "Hoe je de vragen aanpakt",
-    "approach.body": "Antwoord eerlijk, op basis van je huidige situatie. Kies de optie die het best jouw dagelijkse praktijk weergeeft, niet wat je zou willen. Het is volstrekt normaal — en verwacht — dat je op verschillende dimensies verschillend scoort. Veel mensen zijn op het ene vlak Gemiddeld en op het andere Beginner. Dat is precies wat dit instrument zichtbaar moet maken.",
-    "next.title": "Wat er daarna gebeurt",
-    "next.body": "Individuele resultaten worden geaggregeerd gebruikt. LIS definieert ook doelprofielen per product area. Samen helpt dat ons onderbouwde, realistische keuzes te maken over hoe LIS met AI omgaat — nu en in de toekomst.",
-    "close": "Begrepen"
+    "approach.body.1": "Antwoord eerlijk, op basis van je huidige situatie. Kies de optie die het best jouw dagelijkse praktijk weergeeft, niet wat je zou willen.",
+    "approach.body.2": "Het is volstrekt normaal — en verwacht — dat je op verschillende dimensies verschillend scoort. Veel mensen zijn op het ene vlak Gemiddeld en op het andere Beginner. Dat is precies wat dit instrument zichtbaar moet maken."
+  },
+  "consent": {
+    "label": "Ik begrijp dat mijn individuele antwoorden in mijn browser blijven tenzij ik ze zelf exporteer, en dat geëxporteerde antwoorden — in geaggregeerde vorm — gebruikt kunnen worden om trainings- en ontwikkelbehoeften binnen LIS in kaart te brengen.",
+    "required": "Vink het vakje hierboven aan om verder te gaan."
   },
   "citation": {
     "label": "Gebaseerd op",
     "body": "<strong>Hackl, V., Müller, A. E., & Sailer, M.</strong> (2025). <em>The AI Literacy Heptagon: A Structured Approach to AI Literacy in Higher Education.</em>",
     "venue": "arXiv-preprint 2509.18900 [cs.CY], University of Passau.",
     "linkLabel": "Lees het paper (arXiv)",
-    "note": "De zeven dimensies en vier Bloom-georiënteerde niveaus komen rechtstreeks uit het Heptagon-framework in het paper. De 28 deelvragen en de LIS-doelprofielen per rol zijn opgesteld door het AI Literacy Team van TU/e LIS."
+    "note": "De zeven dimensies en vier Bloom-georiënteerde niveaus komen rechtstreeks uit het Heptagon-framework in het paper. De 28 deelvragen zijn opgesteld door het AI Literacy Team van TU/e LIS."
   },
   "scope": {
     "individual.title": "Over jou",
-    "individual.body": "Optioneel. De naam wordt alleen in het geëxporteerde bestand opgeslagen; de rest helpt de aggregator je profiel te plaatsen binnen de organisatie.",
-    "team.title": "Over het team",
-    "team.body": "Een teamprofiel wordt ofwel door de lead namens het team ingevuld, of later berekend door individuele exports in de aggregator in te laden.",
+    "individual.body": "Optioneel. De naam wordt alleen in het geëxporteerde bestand opgeslagen; de rest helpt je profiel binnen de organisatie te plaatsen voor analyse van trainingsbehoeften.",
     "field.name": "Naam",
     "field.name.placeholder.individual": "Je naam (optioneel)",
-    "field.name.placeholder.team": "Teamnaam",
     "field.role": "Functie",
     "field.role.placeholder": "bv. Information Specialist",
     "field.productArea": "Product Area",
     "field.productArea.placeholder": "Kies…",
     "field.team": "Team",
     "field.team.placeholder": "Kies…",
-    "field.participantCount": "Aantal deelnemers",
-    "field.roleArchetype": "LIS-rolarchetype",
-    "field.roleArchetype.body": "Optioneel. Door een archetype te kiezen wordt het doelprofiel over je resultaat gelegd, zodat je lacunes ten opzichte van dat doel kunt zien.",
-    "field.roleArchetype.none": "Geen doel / anders",
     "begin": "Start evaluatie"
   },
   "assess": {
     "progress": "Dimensie {{current}} van {{total}}",
     "heading": "{{dimension}}",
-    "sub.purpose": "Doel",
     "sub.prompt": "Beantwoord alle vier de vragen voor deze dimensie en ga dan verder.",
+    "evidence.label": "Toelichting of voorbeeld (optioneel)",
     "previous": "Vorige",
     "next": "Volgende dimensie",
     "review": "Bekijk en afronden"
@@ -88,7 +84,6 @@
   "results": {
     "heading": "Je profiel",
     "body": "Hieronder je heptagon, waarbij elke dimensie is gescoord als het gemiddelde van de vier deelvragen. Dimensies binnen de terracotta basislijn-band liggen onder het Beginner-niveau dat LIS van iedere medewerker verwacht.",
-    "body.withTarget": "De gestippelde band toont het doelprofiel voor de rol {{role}} — dimensies waar je polygon binnen de doelband valt liggen onder het doel voor die rol.",
     "dimensionCard.level": "{{name}} · {{mean}}",
     "dimensionCard.mean": "Gemiddelde",
     "dimensionCard.subScores": "Deelscores",
@@ -96,8 +91,24 @@
     "export.png": "Download PNG-plaat",
     "startOver": "Nieuwe evaluatie starten",
     "toggle.deltasBaseline": "Verschillen t.o.v. basislijn",
-    "toggle.deltasTarget": "Verschillen t.o.v. roldoel",
     "toggle.deltasOff": "Verschillen verbergen"
+  },
+  "pilotFeedback": {
+    "heading": "Help ons dit instrument te verbeteren",
+    "body": "Dit is een pilotversie. Twee korte vragen, beide optioneel.",
+    "clarity.label": "Waren de vragen duidelijk?",
+    "clarity.yes": "Ja",
+    "clarity.somewhat": "Enigszins",
+    "clarity.no": "Nee",
+    "notes.label": "Welke vragen waren onduidelijk of zouden beter kunnen?",
+    "notes.placeholder": "Optioneel — alles wat je ons wilt laten weten."
+  },
+  "resources": {
+    "heading": "Verder lezen & bronnen",
+    "body": "Suggesties voor vervolgstappen, gekoppeld aan de dimensies waarop je zojuist hebt gereflecteerd.",
+    "general.title": "Algemeen",
+    "perDimension.title": "Per dimensie",
+    "empty": "Bronnenlijst volgt."
   },
   "aggregator": {
     "kicker": "TU/e · LIS · AI Literacy Aggregator",
@@ -107,7 +118,7 @@
     "drop.prompt": "Sleep JSON-profielen hier",
     "drop.or": "of",
     "drop.pick": "kies bestanden",
-    "drop.hint": "Eén of meer heptagon JSON-exports (schema v2.0). Bestanden die niet aan het schema voldoen worden gemarkeerd en overgeslagen.",
+    "drop.hint": "Eén of meer heptagon JSON-exports (schema v2.0 of v3.0). Bestanden die niet aan het schema voldoen worden gemarkeerd en overgeslagen.",
     "import.added": "{{count}} profiel toegevoegd",
     "import.added_plural": "{{count}} profielen toegevoegd",
     "import.skipped": "{{count}} bestand overgeslagen ({{reason}})",
@@ -129,7 +140,6 @@
     "aggregate.minmax": "Min–max-band",
     "aggregate.below": "{{count}} dimensie onder basislijn",
     "aggregate.below_plural": "{{count}} dimensies onder basislijn",
-    "target.overlay": "Roldoel: {{role}}",
     "children.pa": "Product Areas",
     "children.team": "Teams",
     "children.individual": "Individuen",
@@ -154,14 +164,14 @@
     "diff.zero":     "Op basislijn"
   },
   "figure": {
-    "caption.title": "Figuur 1 — Profiel van het team <em>Information Literacy & Education</em>.",
-    "caption.meta": "LIS / Library & Open Science / 2026-04-22"
+    "caption.title": "Figuur 1 — Voorbeeld heptagon-profiel.",
+    "caption.meta": "LIS / AI Literacy v3 / 2026-05-15"
   },
   "margin": {
     "reading.title": "De plaat lezen",
     "reading.body": "Zeven assen, één per dimensie. Vier concentrische ringen: <em>Onbewust</em>, <em>Beginner</em>, <em>Gemiddeld</em>, <em>Expert</em>. De terracotta-band markeert de basislijn (Beginner) die van iedere LIS-medewerker wordt verwacht.",
     "profile.title": "Het profiel",
-    "profile.body": "De rode veelhoek is de huidige zelfevaluatie van het team, elke dimensie gescoord als het gemiddelde van vier deelvragen.",
+    "profile.body": "De rode veelhoek is je huidige zelfreflectie, elke dimensie gescoord als het gemiddelde van vier deelvragen.",
     "interaction.title": "Interactie",
     "interaction.body": "Hover over een hoekpunt voor het gemiddelde en de deelscores van die dimensie. Exporteer als JSON of als gezette PNG-plaat."
   },
@@ -172,13 +182,48 @@
     "expert":       "Expert"
   },
   "dimensions": {
-    "technical":        { "short": "Technisch",         "full": "Technische kennis en vaardigheden",  "purpose": "Begrijpen hoe AI-systemen werken en waar hun grenzen liggen." },
-    "application":      { "short": "Toepassing",        "full": "Toepassingsvaardigheid",             "purpose": "Effectief, reflectief en doelgericht gebruik van AI-tools." },
-    "integration":      { "short": "Integratie",        "full": "Integratievaardigheden",             "purpose": "AI zinvol inbedden in LIS-diensten en -workflows." },
-    "legal":            { "short": "Juridisch",         "full": "Juridische en regelgevende kennis",  "purpose": "Veilig en conform AI-gebruik in onderwijs- en onderzoeksondersteuning." },
-    "socialImpact":     { "short": "Maatschappelijk",   "full": "Inzicht in maatschappelijke impact", "purpose": "Begrijpen wat AI doet met de maatschappij, het onderwijs en de LIS-rol." },
-    "ethical":          { "short": "Ethisch",           "full": "Ethisch bewustzijn en redeneren",    "purpose": "Verantwoord en reflectief AI-gebruik." },
-    "criticalThinking": { "short": "Kritisch denken",   "full": "Kritisch denkvermogen",              "purpose": "Automation bias en overmatig vertrouwen voorkomen." }
+    "technical": {
+      "short": "Technisch",
+      "full": "Technische kennis en vaardigheden",
+      "purpose": "Begrijpen hoe AI-systemen werken en waar hun grenzen liggen.",
+      "description": "Deze dimensie gaat over het begrijpen van de fundamentele principes en mechanismen van AI, waaronder algoritmen, dataverwerking en computationele concepten. Belangrijk omdat een basisbegrip van hoe AI functioneert essentieel is om de mogelijkheden, beperkingen en ethische implicaties accuraat te beoordelen."
+    },
+    "application": {
+      "short": "Toepassing",
+      "full": "Toepassingsvaardigheid",
+      "purpose": "Effectief, reflectief en doelgericht gebruik van AI-tools.",
+      "description": "Dit verwijst naar het vermogen om AI-technologieën effectief in te zetten om praktische problemen op te lossen en workflows te verbeteren in diverse contexten. Belangrijk om efficiënte en contextueel passende AI-inzet te waarborgen, zoals het gebruik van prompt engineering of AI-assistenten om professionele taken te ondersteunen."
+    },
+    "integration": {
+      "short": "Integratie",
+      "full": "Integratievaardigheden",
+      "purpose": "AI zinvol inbedden in LIS-diensten en -workflows.",
+      "description": "Deze dimensie richt zich op het integreren en aanpassen van AI-technologieën binnen bestaande digitale omgevingen en organisatorische workflows. Belangrijk voor het navigeren van professionele transformaties, het identificeren van geschikte integratiepunten en het managen van de overgang tussen menselijk en AI-gestuurd werken."
+    },
+    "legal": {
+      "short": "Juridisch",
+      "full": "Juridische en regelgevende kennis",
+      "purpose": "Veilig en conform AI-gebruik in onderwijs- en onderzoeksondersteuning.",
+      "description": "Dit omvat begrip van zowel AI-specifieke wetgeving (zoals de EU AI Act) als technologie-neutrale kaders (zoals de AVG en auteursrecht). Essentieel om juridische verantwoordelijkheden te navigeren en ervoor te zorgen dat ontwikkeling en gebruik van AI in overeenstemming blijven met evoluerende regionale en mondiale regelgeving."
+    },
+    "socialImpact": {
+      "short": "Maatschappelijk",
+      "full": "Inzicht in maatschappelijke impact",
+      "purpose": "Begrijpen wat AI doet met de maatschappij, het onderwijs en de LIS-rol.",
+      "description": "Deze dimensie betreft het vermogen om de veelzijdige effecten van AI op maatschappelijke structuren en menselijke interacties te doorgronden. Belangrijk om de lange-termijngevolgen van AI voor diverse bevolkingsgroepen te herkennen en het samenspel tussen technologische vooruitgang en sociaal-economische systemen te begrijpen."
+    },
+    "ethical": {
+      "short": "Ethisch",
+      "full": "Ethisch bewustzijn en redeneren",
+      "purpose": "Verantwoord en reflectief AI-gebruik.",
+      "description": "Dit omvat het vermogen om ethische implicaties op individueel, maatschappelijk en ecologisch niveau te herkennen en te adresseren. Belangrijk om waarden zoals privacy, eerlijkheid en menselijke waardigheid te waarborgen, met aandacht voor de milieueffecten van AI-resourceverbruik."
+    },
+    "criticalThinking": {
+      "short": "Kritisch denken",
+      "full": "Kritisch denkvermogen",
+      "purpose": "Automation bias en overmatig vertrouwen voorkomen.",
+      "description": "Dit is het vermogen om AI-systemen, hun output en hun geschiktheid voor specifieke toepassingen te analyseren, evalueren en kritisch te beoordelen. Cruciaal om risico's als \"hallucinaties\" of algoritmische bias te herkennen en kritiekloze acceptatie van AI-gegenereerde informatie te voorkomen."
+    }
   },
   "questions": {
     "TKS1": {
@@ -433,14 +478,6 @@
         "expert":       "Ze informeren strategie of beleid"
       }
     }
-  },
-  "roles": {
-    "infoLitTeaching":       { "name": "Informatievaardigheden & Onderwijsondersteuning",   "description": "Docenten informatievaardigheden en onderwijsondersteuners. Profiellogica: sterke ethische, kritische en maatschappelijke focus; solide maar niet sterk technisch." },
-    "researchOpenScience":   { "name": "Research Support & Open Science",                   "description": "Data stewards, open-science-adviseurs, onderzoeksondersteunende librarians. Profiellogica: juridische/regelgevende diepte en kritisch oordeel wegen zwaarder dan technische ontwikkelvaardigheden." },
-    "copyrightLegalPolicy":  { "name": "Auteursrecht, Juridisch & Beleidsondersteuning",    "description": "Copyright officers, beleidsadviseurs, integriteitsondersteuning. Profiellogica: juridische en ethische diepte; AI-gebruik zelf is ondergeschikt." },
-    "digitalServicesSystems":{ "name": "Digital Services / Library Systems",                "description": "Discovery, systems librarians, toolselectie, platformondersteuning. Profiellogica: integratie is de onderscheidende expert-dimensie." },
-    "frontOfficeSupport":    { "name": "Frontoffice / Gebruikersondersteuning",              "description": "Servicedesks, eerstelijnsondersteuning bij AI-vragen. Profiellogica: rol als portier en gids — geen diepe expertise." },
-    "managementCoordination":{ "name": "LIS Management & Coördinatie",                       "description": "Teamleads, product owners, coördinatoren. Profiellogica: governance-zwaar, evaluatie-zwaar, cultuurbepalende rol." }
   },
   "heptagon": {
     "title": "AI-geletterdheidsprofiel",

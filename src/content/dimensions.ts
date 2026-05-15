@@ -41,13 +41,13 @@ export type DimensionCode = (typeof DIMENSIONS)[number]["code"];
  */
 export type Profile = Record<DimensionCode, number>;
 
-/** Sample profile — matches the figure used in the phase-0 sketch. */
+/** Sample profile shown on the landing diagram — refreshed for v3. */
 export const SAMPLE_PROFILE: Profile = {
   TKS: 1,
   AP:  2,
-  IS:  2,
-  LRK: 0,
+  IS:  1,
+  LRK: 2,
   SIU: 2,
-  EAR: 2,
+  EAR: 3,
   CTA: 2
 };

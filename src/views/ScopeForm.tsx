@@ -2,7 +2,6 @@ import { FormEvent, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Subject } from "../state/types";
 import { PRODUCT_AREAS } from "../content/org";
-import { ROLES, RoleKey } from "../content/targetProfiles";
 
 interface ScopeFormProps {
   initial: Subject;
@@ -18,9 +17,6 @@ export function ScopeForm({ initial, onSubmit, onBack }: ScopeFormProps) {
     const pa = PRODUCT_AREAS.find((p) => p.key === subject.productArea);
     return pa?.teams ?? [];
   }, [subject.productArea]);
-
-  const title = subject.scope === "team" ? t("scope.team.title") : t("scope.individual.title");
-  const body  = subject.scope === "team" ? t("scope.team.body")  : t("scope.individual.body");
 
   const canSubmit = Boolean(subject.productArea && subject.team);
 
@@ -41,8 +37,8 @@ export function ScopeForm({ initial, onSubmit, onBack }: ScopeFormProps) {
             <span key={i}>{seg.trim()}{i < arr.length - 1 && <span className="dot">·</span>}</span>
           ))}
         </p>
-        <h1 className="hanging">{title}</h1>
-        <p className="lede">{body}</p>
+        <h1 className="hanging">{t("scope.individual.title")}</h1>
+        <p className="lede">{t("scope.individual.body")}</p>
       </header>
 
       <form className="scope-form" onSubmit={handleSubmit}>
@@ -52,25 +48,21 @@ export function ScopeForm({ initial, onSubmit, onBack }: ScopeFormProps) {
             id="name"
             type="text"
             value={subject.name ?? ""}
-            placeholder={subject.scope === "team"
-              ? t("scope.field.name.placeholder.team")
-              : t("scope.field.name.placeholder.individual")}
+            placeholder={t("scope.field.name.placeholder.individual")}
             onChange={(e) => update("name", e.target.value || undefined)}
           />
         </div>
 
-        {subject.scope === "individual" && (
-          <div className="field">
-            <label htmlFor="role">{t("scope.field.role")}</label>
-            <input
-              id="role"
-              type="text"
-              value={subject.role ?? ""}
-              placeholder={t("scope.field.role.placeholder")}
-              onChange={(e) => update("role", e.target.value || undefined)}
-            />
-          </div>
-        )}
+        <div className="field">
+          <label htmlFor="role">{t("scope.field.role")}</label>
+          <input
+            id="role"
+            type="text"
+            value={subject.role ?? ""}
+            placeholder={t("scope.field.role.placeholder")}
+            onChange={(e) => update("role", e.target.value || undefined)}
+          />
+        </div>
 
         <div className="field">
           <label htmlFor="productArea">{t("scope.field.productArea")} *</label>
@@ -104,37 +96,6 @@ export function ScopeForm({ initial, onSubmit, onBack }: ScopeFormProps) {
               <option key={tm.name} value={tm.name}>
                 {tm.name}{tm.truncated ? "…" : ""}
               </option>
-            ))}
-          </select>
-        </div>
-
-        {subject.scope === "team" && (
-          <div className="field">
-            <label htmlFor="participantCount">{t("scope.field.participantCount")}</label>
-            <input
-              id="participantCount"
-              type="number"
-              min={1}
-              value={subject.participantCount ?? ""}
-              onChange={(e) => update("participantCount", e.target.value ? Number(e.target.value) : undefined)}
-            />
-          </div>
-        )}
-
-        <div className="field">
-          <label htmlFor="roleArchetype">{t("scope.field.roleArchetype")}</label>
-          <p className="field-hint">{t("scope.field.roleArchetype.body")}</p>
-          <select
-            id="roleArchetype"
-            value={subject.roleArchetype ?? "other"}
-            onChange={(e) => {
-              const v = e.target.value as RoleKey;
-              update("roleArchetype", v === "other" ? undefined : v);
-            }}
-          >
-            <option value="other">{t("scope.field.roleArchetype.none")}</option>
-            {ROLES.map((r) => (
-              <option key={r.key} value={r.key}>{t(`roles.${r.i18nKey}.name`)}</option>
             ))}
           </select>
         </div>

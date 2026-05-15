@@ -10,15 +10,26 @@ import { loadDraft, saveDraft, clearDraft } from "./state/draft";
 import { DIMENSIONS } from "./content/dimensions";
 import { SUBS_PER_DIM } from "./content/questions";
 
+/**
+ * The aggregator is no longer linked from the landing in V3 — facilitators
+ * reach it with ?aggregator=1 in the URL. The view is detected once on mount.
+ */
+function aggregatorRequested(): boolean {
+  if (typeof window === "undefined") return false;
+  return new URLSearchParams(window.location.search).has("aggregator");
+}
+
 export default function App() {
-  const [view, setView] = useState<View>({ kind: "landing" });
+  const [view, setView] = useState<View>(
+    aggregatorRequested() ? { kind: "aggregator" } : { kind: "landing" }
+  );
   const [draftOnDisk, setDraftOnDisk] = useState(loadDraft());
 
   // Persist draft on every assess-state update.
   useEffect(() => {
     if (view.kind === "assess") {
       saveDraft({
-        version: "2.0",
+        version: "3.0",
         subject: view.subject,
         subScores: view.subScores,
         evidence: view.evidence,
@@ -43,11 +54,10 @@ export default function App() {
             evidence: d.evidence,
             index: firstUnansweredIndex(d.subScores)
           })}
-          onStart={(mode) => {
-            const subject: Subject = { ...EMPTY_SUBJECT, scope: mode };
+          onStart={() => {
+            const subject: Subject = { ...EMPTY_SUBJECT };
             setView({ kind: "scope", subject });
           }}
-          onOpenAggregator={() => setView({ kind: "aggregator" })}
         />
       </>
     );

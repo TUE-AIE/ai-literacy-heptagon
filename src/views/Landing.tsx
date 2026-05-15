@@ -9,16 +9,15 @@ import { SAMPLE_PROFILE } from "../content/dimensions";
 import { AssessmentDraft } from "../state/types";
 
 interface LandingProps {
-  onStart: (mode: "individual" | "team") => void;
+  onStart: () => void;
   onResume?: (draft: AssessmentDraft) => void;
-  onOpenAggregator?: () => void;
   draft?: AssessmentDraft | null;
 }
 
-export function Landing({ onStart, onResume, onOpenAggregator, draft }: LandingProps) {
+export function Landing({ onStart, onResume, draft }: LandingProps) {
   const { t } = useTranslation();
   const [reveal, setReveal] = useState(0);
-  const [aboutOpen, setAboutOpen] = useState(false);
+  const [consented, setConsented] = useState(false);
 
   const notes = [
     { title: t("margin.reading.title"),     body: t("margin.reading.body") },
@@ -45,32 +44,47 @@ export function Landing({ onStart, onResume, onOpenAggregator, draft }: LandingP
           <Margin notes={notes} />
         </MarginSlot>
 
+        <p className="whats-new">{t("landing.whatsNew")}</p>
+
+        <IntroBlock />
+
         <section className="landing-cta">
           <h2 className="landing-heading">{t("landing.heading")}</h2>
           <p className="landing-body">{t("landing.body")}</p>
+
+          <label className="consent-row">
+            <input
+              type="checkbox"
+              checked={consented}
+              onChange={(e) => setConsented(e.target.checked)}
+            />
+            <span>{t("consent.label")}</span>
+          </label>
+
           <div className="landing-buttons">
-            <button className="btn btn-primary"   type="button" onClick={() => onStart("individual")}>
+            <button
+              className="btn btn-primary"
+              type="button"
+              disabled={!consented}
+              onClick={() => onStart()}
+              aria-describedby={!consented ? "consent-hint" : undefined}
+            >
               {t("landing.cta.individual")}
             </button>
-            <button className="btn btn-secondary" type="button" onClick={() => onStart("team")}>
-              {t("landing.cta.team")}
-            </button>
             {draft && onResume && (
-              <button className="btn btn-ghost" type="button" onClick={() => onResume(draft)}>
+              <button
+                className="btn btn-ghost"
+                type="button"
+                disabled={!consented}
+                onClick={() => onResume(draft)}
+              >
                 {t("landing.cta.resume")}
               </button>
             )}
-            {onOpenAggregator && (
-              <button className="btn btn-ghost" type="button" onClick={onOpenAggregator}>
-                {t("landing.cta.aggregator")}
-              </button>
-            )}
-            <button className="btn btn-ghost" type="button" onClick={() => setAboutOpen((v) => !v)} aria-expanded={aboutOpen}>
-              {t("landing.cta.about")}
-            </button>
           </div>
-
-          {aboutOpen && <OnboardingBlock onClose={() => setAboutOpen(false)} />}
+          {!consented && (
+            <p id="consent-hint" className="consent-hint">{t("consent.required")}</p>
+          )}
 
           <div className="landing-notes">
             <div><h4>{t("landing.notes.time.title")}</h4>    <p>{t("landing.notes.time.body")}</p></div>
@@ -89,48 +103,44 @@ export function Landing({ onStart, onResume, onOpenAggregator, draft }: LandingP
   );
 }
 
-/** The expandable "About this tool" block — onboarding copy from the mapping doc. */
-function OnboardingBlock({ onClose }: { onClose: () => void }) {
+/** Always-visible intro explaining the tool's purpose. */
+function IntroBlock() {
   const { t } = useTranslation();
   return (
-    <section className="onboarding-block" aria-label={t("landing.cta.about")}>
+    <section className="intro-block" aria-labelledby="intro-heading">
       <article>
-        <h3>{t("onboarding.why.title")}</h3>
-        <p>{t("onboarding.why.body.1")}</p>
-        <p>{t("onboarding.why.body.2")}</p>
-        <p>{t("onboarding.why.body.3")}</p>
-      </article>
-
-      <article>
-        <h3>{t("onboarding.reasons.title")}</h3>
-        <h4>{t("onboarding.reasons.1.title")}</h4>
-        <p>{t("onboarding.reasons.1.body")}</p>
-        <h4>{t("onboarding.reasons.2.title")}</h4>
-        <p>{t("onboarding.reasons.2.body")}</p>
-        <h4>{t("onboarding.reasons.3.title")}</h4>
-        <p>{t("onboarding.reasons.3.body")}</p>
-      </article>
-
-      <article className="onboarding-not">
-        <h3>{t("onboarding.notATest.title")}</h3>
-        <p>{t("onboarding.notATest.body")}</p>
+        <h3 id="intro-heading">{t("intro.why.title")}</h3>
+        <p>{t("intro.why.body.1")}</p>
+        <p>{t("intro.why.body.2")}</p>
+        <p>{t("intro.why.body.3")}</p>
       </article>
 
       <article>
-        <h3>{t("onboarding.approach.title")}</h3>
-        <p>{t("onboarding.approach.body")}</p>
+        <h3>{t("intro.what.title")}</h3>
+        <p>{t("intro.what.body.1")}</p>
+        <p>{t("intro.what.body.2")}</p>
       </article>
 
       <article>
-        <h3>{t("onboarding.next.title")}</h3>
-        <p>{t("onboarding.next.body")}</p>
+        <h3>{t("intro.reasons.title")}</h3>
+        <h4>{t("intro.reasons.1.title")}</h4>
+        <p>{t("intro.reasons.1.body")}</p>
+        <h4>{t("intro.reasons.2.title")}</h4>
+        <p>{t("intro.reasons.2.body")}</p>
+        <h4>{t("intro.reasons.3.title")}</h4>
+        <p>{t("intro.reasons.3.body")}</p>
       </article>
 
-      <div className="onboarding-close">
-        <button type="button" className="btn btn-ghost" onClick={onClose}>
-          {t("onboarding.close")}
-        </button>
-      </div>
+      <article className="intro-not">
+        <h3>{t("intro.notATest.title")}</h3>
+        <p>{t("intro.notATest.body")}</p>
+      </article>
+
+      <article>
+        <h3>{t("intro.approach.title")}</h3>
+        <p>{t("intro.approach.body.1")}</p>
+        <p>{t("intro.approach.body.2")}</p>
+      </article>
     </section>
   );
 }

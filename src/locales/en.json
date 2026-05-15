@@ -3,8 +3,8 @@
     "kicker": "TU/e · Library & Information Services · AI Enablement Program",
     "title.line1": "The AI Literacy",
     "title.line2": "Heptagon.",
-    "lede": "Seven dimensions, four levels, one figure — a self-assessment instrument for LIS, rendered as an interactive publication plate.",
-    "stamp": "v2.0 · 2026-04-22",
+    "lede": "Seven dimensions, four levels, one figure — a self-reflection instrument for LIS, rendered as an interactive publication plate.",
+    "stamp": "v3.0 · 2026-05-15",
     "replay": "Replay reveal",
     "languageToggle.aria": "Change language",
     "back": "Back",
@@ -14,73 +14,69 @@
   },
   "landing": {
     "heading": "Where does AI literacy stand, here, today?",
-    "body": "Twenty-eight short questions across seven dimensions produce a nuanced profile. Keep it private or share the file with your team lead — nothing leaves your browser unless you export it.",
-    "cta.individual": "Assess myself",
-    "cta.team": "Assess my team",
+    "body": "Twenty-eight short questions across seven dimensions produce a nuanced profile of your own AI literacy. Nothing leaves your browser unless you choose to export it.",
+    "cta.individual": "Begin self-reflection",
     "cta.resume": "Resume draft",
-    "cta.aggregator": "Open aggregator",
-    "cta.about": "About this tool",
+    "whatsNew": "New in v3 — refreshed question set, updated heptagon diagram, refined scoring, individual self-reflection only.",
     "notes": {
       "time.title": "Time",
       "time.body": "About 15 minutes. Honest beats complete — pick the option that sounds most like your day-to-day.",
       "privacy.title": "Privacy",
-      "privacy.body": "No accounts, no tracking, no server. Your answers live in this browser tab until you choose to download them.",
+      "privacy.body": "No accounts, no tracking, no server. Your answers live in this browser tab until you choose to download them. If you share your export, individual results are intended to be used in aggregated form to identify training needs.",
       "export.title": "What you get out",
       "export.body": "A JSON file you can keep or share, and a typeset PNG of the heptagon plate for reports and slides."
     }
   },
-  "onboarding": {
+  "intro": {
     "why.title": "Why are we mapping AI literacy in LIS?",
-    "why.body.1": "Artificial Intelligence is increasingly part of how we support education, research, and open science at TU/e. As Library and Information Services, we already engage with AI in many ways: advising staff and students, selecting tools, designing services, interpreting legal and ethical implications, and supporting responsible use.",
+    "why.body.1": "Artificial Intelligence is increasingly part of how we support education, research, and operations at TU/e. As Library and Information Services, we already engage with AI in many ways: advising staff and students, selecting tools, designing services, interpreting legal and ethical implications, and supporting responsible use.",
     "why.body.2": "At the same time, AI affects roles and services differently. Not everyone needs the same level of expertise, and nobody is expected to be an expert in everything.",
     "why.body.3": "This is why LIS is using the AI Literacy Heptagon: as a shared reflection and development tool, not as a test.",
+    "what.title": "What is the AI Literacy Heptagon?",
+    "what.body.1": "The AI Literacy Heptagon describes AI literacy as seven interconnected dimensions: technical understanding of AI, practical use of AI tools, critical evaluation of AI outputs, integration of AI into workflows and services, legal and regulatory awareness, ethical reasoning, and understanding of societal impact.",
+    "what.body.2": "For each dimension, four levels are used: Unaware → Beginner → Intermediate → Expert. These levels describe how you relate to AI in practice, not how \"good\" you are.",
     "reasons.title": "Why are we asking you to reflect on this?",
     "reasons.1.title": "1. To understand where we are now",
     "reasons.1.body": "LIS already has a lot of knowledge and experience — but it is unevenly distributed across roles, teams, and services. A shared overview helps us see strengths, gaps, and overlaps.",
     "reasons.2.title": "2. To clarify where we need to be",
     "reasons.2.body": "Different LIS product areas require different AI literacy profiles. Some roles need stronger legal and ethical expertise; others need stronger integration or application skills. Mapping this helps us be intentional rather than reactive.",
     "reasons.3.title": "3. To support learning and development",
-    "reasons.3.body": "The results will be used to guide training and upskilling efforts, support team discussions about roles and expectations, and inform strategic choices around AI in LIS. This is about growth, not judgement.",
+    "reasons.3.body": "The results will be used to guide training and upskilling efforts, support team discussions around AI in our roles, and inform strategic choices around AI in LIS. This is about growth, not judgement.",
     "notATest.title": "What this is not",
-    "notATest.body": "To be very clear, this exercise is not a performance evaluation, not a test of intelligence or competence, not a way to rank individuals or teams, and not an expectation that everyone must reach Expert level. There is no ideal personal profile.",
+    "notATest.body": "To be very clear, this exercise is not a performance evaluation, not mandatory, not a test of intelligence or competence, not a way to rank individuals or teams, and not an expectation that everyone must reach \"expert\" level. There is no \"ideal\" personal profile.",
     "approach.title": "How to approach the questions",
-    "approach.body": "Answer honestly, based on your current situation. Choose the option that best reflects your day-to-day practice, not your aspirations. It is completely normal — and expected — to score differently across dimensions. Many people are Intermediate in one area and Beginner in another. That's exactly what this tool is designed to show.",
-    "next.title": "What happens next",
-    "next.body": "Individual results are used in aggregated form. LIS will also define target profiles per product area. Together, this helps us make informed, realistic decisions about how LIS engages with AI — now and in the future.",
-    "close": "Got it"
+    "approach.body.1": "Answer honestly, based on your current situation. Choose the option that best reflects your day-to-day practice, not your aspirations.",
+    "approach.body.2": "It is completely normal — and expected — to score differently across dimensions. Many people are Intermediate in one area and Beginner in another. That's exactly what this tool is designed to show."
+  },
+  "consent": {
+    "label": "I understand that my individual answers stay in my browser unless I choose to export them, and that exported answers may be used — in aggregated form — to identify training and development needs across LIS.",
+    "required": "Please check the box above before continuing."
   },
   "citation": {
     "label": "Based on",
     "body": "<strong>Hackl, V., Müller, A. E., & Sailer, M.</strong> (2025). <em>The AI Literacy Heptagon: A Structured Approach to AI Literacy in Higher Education.</em>",
     "venue": "arXiv preprint 2509.18900 [cs.CY], University of Passau.",
     "linkLabel": "Read the paper (arXiv)",
-    "note": "The seven dimensions and four Bloom-aligned levels are adopted directly from the paper's Heptagon framework. The 28 sub-questions and the LIS role target profiles were authored by the TU/e LIS AI Literacy Team."
+    "note": "The seven dimensions and four Bloom-aligned levels are adopted directly from the paper's Heptagon framework. The 28 sub-questions were authored by the TU/e LIS AI Literacy Team."
   },
   "scope": {
     "individual.title": "About you",
-    "individual.body": "Optional. The name is kept only on the exported file; the rest helps the aggregator place your profile in the org.",
-    "team.title": "About the team",
-    "team.body": "A team profile is either filled by the lead on behalf of the team, or computed later by importing individual exports in the aggregator.",
+    "individual.body": "Optional. The name is kept only on the exported file; the rest helps place your profile in the org for training-needs analysis.",
     "field.name": "Name",
     "field.name.placeholder.individual": "Your name (optional)",
-    "field.name.placeholder.team": "Team name",
     "field.role": "Role",
     "field.role.placeholder": "e.g. Information Specialist",
     "field.productArea": "Product Area",
     "field.productArea.placeholder": "Select…",
     "field.team": "Team",
     "field.team.placeholder": "Select…",
-    "field.participantCount": "Number of participants",
-    "field.roleArchetype": "LIS role archetype",
-    "field.roleArchetype.body": "Optional. Picking an archetype overlays its target profile on your result so you can see gaps vs the target for that role.",
-    "field.roleArchetype.none": "No target / other",
     "begin": "Begin assessment"
   },
   "assess": {
     "progress": "Dimension {{current}} of {{total}}",
     "heading": "{{dimension}}",
-    "sub.purpose": "Purpose",
     "sub.prompt": "Answer all four questions for this dimension, then continue.",
+    "evidence.label": "Evidence or notes (optional)",
     "previous": "Previous",
     "next": "Next dimension",
     "review": "Review & finish"
@@ -88,7 +84,6 @@
   "results": {
     "heading": "Your profile",
     "body": "Below is the heptagon you just described, with each dimension scored as the mean of its four sub-questions. Dimensions that sit inside the terracotta baseline band are below the Beginner level LIS expects from every staff member.",
-    "body.withTarget": "The dotted band shows the target profile for the {{role}} role — dimensions where your polygon falls inside the target band are below the target for that role.",
     "dimensionCard.level": "{{name}} · {{mean}}",
     "dimensionCard.mean": "Mean",
     "dimensionCard.subScores": "Sub-scores",
@@ -96,8 +91,24 @@
     "export.png": "Download PNG plate",
     "startOver": "Start a new assessment",
     "toggle.deltasBaseline": "Deltas vs baseline",
-    "toggle.deltasTarget": "Deltas vs role target",
     "toggle.deltasOff": "Hide deltas"
+  },
+  "pilotFeedback": {
+    "heading": "Help us improve this tool",
+    "body": "This is a pilot version. Two quick questions, both optional.",
+    "clarity.label": "Were the questions clear?",
+    "clarity.yes": "Yes",
+    "clarity.somewhat": "Somewhat",
+    "clarity.no": "No",
+    "notes.label": "Which questions felt unclear or could be improved?",
+    "notes.placeholder": "Optional — anything you'd like us to know."
+  },
+  "resources": {
+    "heading": "Further reading & resources",
+    "body": "Suggested next steps for building on the dimensions you just reflected on.",
+    "general.title": "General",
+    "perDimension.title": "By dimension",
+    "empty": "Resource list coming soon."
   },
   "aggregator": {
     "kicker": "TU/e · LIS · AI Literacy Aggregator",
@@ -107,7 +118,7 @@
     "drop.prompt": "Drop JSON profiles here",
     "drop.or": "or",
     "drop.pick": "select files",
-    "drop.hint": "One or more heptagon JSON exports (schema v2.0). Files that don't match the schema are flagged and skipped.",
+    "drop.hint": "One or more heptagon JSON exports (schema v2.0 or v3.0). Files that don't match the schema are flagged and skipped.",
     "import.added": "{{count}} profile added",
     "import.added_plural": "{{count}} profiles added",
     "import.skipped": "{{count}} file skipped ({{reason}})",
@@ -129,7 +140,6 @@
     "aggregate.minmax": "Min–max band",
     "aggregate.below": "{{count}} dimension below baseline",
     "aggregate.below_plural": "{{count}} dimensions below baseline",
-    "target.overlay": "Role target: {{role}}",
     "children.pa": "Product Areas",
     "children.team": "Teams",
     "children.individual": "Individuals",
@@ -154,14 +164,14 @@
     "diff.zero":     "At baseline"
   },
   "figure": {
-    "caption.title": "Figure 1 — Profile of the <em>Information Literacy & Education</em> team.",
-    "caption.meta": "LIS / Library & Open Science / 2026-04-22"
+    "caption.title": "Figure 1 — Sample heptagon profile.",
+    "caption.meta": "LIS / AI Literacy v3 / 2026-05-15"
   },
   "margin": {
     "reading.title": "Reading the plate",
     "reading.body": "Seven axes, one per dimension. Four concentric rings: <em>Unaware</em>, <em>Beginner</em>, <em>Intermediate</em>, <em>Expert</em>. The terracotta band marks the Beginner baseline expected of every LIS member.",
     "profile.title": "The profile",
-    "profile.body": "The red polygon is the team's current self-assessment, each dimension scored as the mean of four sub-questions.",
+    "profile.body": "The red polygon is your current self-reflection, each dimension scored as the mean of four sub-questions.",
     "interaction.title": "Interaction",
     "interaction.body": "Hover any vertex for the dimension's mean and sub-scores. Export as JSON or a typeset PNG plate."
   },
@@ -172,13 +182,48 @@
     "expert":       "Expert"
   },
   "dimensions": {
-    "technical":        { "short": "Technical",          "full": "Technical Knowledge and Skills",   "purpose": "Understanding how AI systems function and where their limits are." },
-    "application":      { "short": "Application",        "full": "Application Proficiency",          "purpose": "Effective, reflective, and purposeful use of AI tools." },
-    "integration":      { "short": "Integration",        "full": "Integration Skills",               "purpose": "Embedding AI meaningfully into LIS services and workflows." },
-    "legal":            { "short": "Legal",              "full": "Legal and Regulatory Knowledge",   "purpose": "Safe, compliant AI use in education and research support." },
-    "socialImpact":     { "short": "Social Impact",      "full": "Social Impact Understanding",      "purpose": "Understanding AI's effect on society, education, and LIS roles." },
-    "ethical":          { "short": "Ethical",            "full": "Ethical Awareness and Reasoning",  "purpose": "Responsible and reflective AI use." },
-    "criticalThinking": { "short": "Critical Thinking",  "full": "Critical Thinking Ability",        "purpose": "Preventing automation bias and over-trust." }
+    "technical": {
+      "short": "Technical",
+      "full": "Technical Knowledge and Skills",
+      "purpose": "Understanding how AI systems function and where their limits are.",
+      "description": "This dimension involves understanding the fundamental principles and mechanisms of AI, including algorithms, data processing, and computational concepts. It is important because a basic grasp of how AI functions is essential for accurately evaluating its capabilities, limitations, and ethical implications."
+    },
+    "application": {
+      "short": "Application",
+      "full": "Application Proficiency",
+      "purpose": "Effective, reflective, and purposeful use of AI tools.",
+      "description": "This refers to the ability to effectively utilize AI technologies to solve practical problems and improve workflows across diverse contexts. It is important for ensuring efficient and contextually appropriate AI deployment, such as using prompt engineering or AI assistants to enhance professional tasks."
+    },
+    "integration": {
+      "short": "Integration",
+      "full": "Integration Skills",
+      "purpose": "Embedding AI meaningfully into LIS services and workflows.",
+      "description": "This dimension focuses on incorporating and adapting AI technologies into existing digital environments and organizational workflows. It is important for navigating professional transformations, identifying appropriate integration points, and managing the transition between human and AI-driven processes."
+    },
+    "legal": {
+      "short": "Legal",
+      "full": "Legal and Regulatory Knowledge",
+      "purpose": "Safe, compliant AI use in education and research support.",
+      "description": "This involves understanding both AI-specific legislation (like the EU AI Act) and technology-neutral frameworks (like GDPR and copyright). It is vital for navigating legal responsibilities and ensuring that the development and use of AI remain compliant with evolving regional and global regulations."
+    },
+    "socialImpact": {
+      "short": "Social Impact",
+      "full": "Social Impact Understanding",
+      "purpose": "Understanding AI's effect on society, education, and LIS roles.",
+      "description": "This dimension covers the ability to comprehend the multifaceted effects of AI on societal structures and human interactions. It is important for recognizing the long-term consequences of AI on diverse populations and understanding the interplay between technological advancement and socio-economic systems."
+    },
+    "ethical": {
+      "short": "Ethical",
+      "full": "Ethical Awareness and Reasoning",
+      "purpose": "Responsible and reflective AI use.",
+      "description": "This encompasses the ability to identify and address ethical implications at the individual, societal, and environmental levels. It is important for safeguarding values such as privacy, fairness, and human dignity, while also considering the environmental impact of AI resource consumption."
+    },
+    "criticalThinking": {
+      "short": "Critical Thinking",
+      "full": "Critical Thinking Ability",
+      "purpose": "Preventing automation bias and over-trust.",
+      "description": "This is the capacity to analyze, evaluate, and critically assess AI systems, their outputs, and their suitability for specific use cases. It is crucial for identifying risks like \"hallucinations\" or algorithmic bias, preventing the uncritical acceptance of AI-generated information."
+    }
   },
   "questions": {
     "TKS1": {
@@ -433,14 +478,6 @@
         "expert":       "They inform strategy or policy"
       }
     }
-  },
-  "roles": {
-    "infoLitTeaching":       { "name": "Information Literacy & Teaching Support",     "description": "Information literacy teachers and education support staff. Profile logic: strong ethical, critical, and societal focus; solid but not highly technical." },
-    "researchOpenScience":   { "name": "Research Support & Open Science",              "description": "Data stewards, open-science advisors, research-support librarians. Profile logic: legal/regulatory depth and critical judgement outweigh technical development skills." },
-    "copyrightLegalPolicy":  { "name": "Copyright, Legal & Policy Support",             "description": "Copyright officers, policy advisors, integrity support. Profile logic: legal and ethical depth; AI use itself is secondary." },
-    "digitalServicesSystems":{ "name": "Digital Services / Library Systems",            "description": "Discovery, systems librarians, tool selection, platform support. Profile logic: integration is the distinguishing expert dimension." },
-    "frontOfficeSupport":    { "name": "Front-office / User Support",                    "description": "Service desks, first-line support with AI questions. Profile logic: gatekeeping and guidance role — not deep expertise." },
-    "managementCoordination":{ "name": "LIS Management & Coordination",                  "description": "Team leads, product owners, coordinators. Profile logic: governance-heavy, evaluation-heavy, culture-setting role." }
   },
   "heptagon": {
     "title": "AI Literacy Profile",

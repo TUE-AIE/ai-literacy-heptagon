@@ -7,8 +7,6 @@ import { Plate } from "../components/Plate";
 import { aggregate, buildTree, nodeAt, profileIdOf } from "../aggregator/aggregate";
 import { readFileAsText, validateExport } from "../aggregator/validate";
 import { ImportedProfile, Node } from "../aggregator/types";
-import { DIMENSIONS } from "../content/dimensions";
-import { roleByKey } from "../content/targetProfiles";
 
 interface AggregatorProps {
   onExit: () => void;
@@ -37,28 +35,6 @@ export function Aggregator({ onExit }: AggregatorProps) {
   const tree = useMemo(() => buildTree(profiles), [profiles]);
   const current: Node = useMemo(() => nodeAt(tree, path), [tree, path]);
   const agg = useMemo(() => aggregate(current.profiles), [current]);
-
-  /**
-   * If every profile at the current node shares one role archetype, surface its
-   * target band as an automatic overlay. Mixed-role groups get no overlay
-   * because there's no unambiguous target for them.
-   */
-  const sharedRole = useMemo(() => {
-    const keys = new Set(current.profiles.map((p) => p.doc.subject.roleArchetype ?? ""));
-    if (keys.size !== 1) return undefined;
-    const only = keys.values().next().value as string;
-    return roleByKey(only);
-  }, [current]);
-
-  const sharedTargetBand = useMemo(() => {
-    if (!sharedRole) return undefined;
-    const min: Record<string, number> = {}, max: Record<string, number> = {};
-    for (const d of DIMENSIONS) {
-      const tr = sharedRole.targets[d.code];
-      min[d.code] = tr.min; max[d.code] = tr.max;
-    }
-    return { min, max };
-  }, [sharedRole]);
 
   const onFiles = async (files: File[]) => {
     const added: ImportedProfile[] = [];
@@ -264,7 +240,6 @@ export function Aggregator({ onExit }: AggregatorProps) {
                       mode="static"
                       interactive={false}
                       band={mode !== "compare" && agg.min && agg.max ? { min: agg.min, max: agg.max } : undefined}
-                      targetBand={mode !== "compare" ? sharedTargetBand : undefined}
                       showDeltas={mode === "diff"}
                       showGapMarginalia={false}
                     />
@@ -296,11 +271,6 @@ export function Aggregator({ onExit }: AggregatorProps) {
                       agg.belowBaseline === 1 ? "aggregator.aggregate.below" : "aggregator.aggregate.below_plural",
                       { count: agg.belowBaseline }
                     )}
-                  </p>
-                )}
-                {mode !== "compare" && sharedRole && (
-                  <p className="aggregator-below-warning" style={{ color: "var(--annotation)" }}>
-                    {t("aggregator.target.overlay", { role: t(`roles.${sharedRole.i18nKey}.name`) })}
                   </p>
                 )}
                 {mode === "diff" && (

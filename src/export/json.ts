@@ -1,14 +1,13 @@
 import { DIMENSIONS, Profile } from "../content/dimensions";
-import { Subject, EvidenceMap } from "../state/types";
+import { Subject, EvidenceMap, PilotFeedback } from "../state/types";
 import { SUBS_PER_DIM, meanOfSubScores } from "../content/questions";
-import { RoleKey } from "../content/targetProfiles";
 
 /**
- * Schema versions. v2.0 replaces the single level-per-dimension with an array
- * of four integer sub-scores; the dimension's level is derived as their mean.
- * v1.0 is deliberately not read — the upgrade requires a fresh assessment.
+ * Schema versions. v3.0 drops team mode and role archetypes; otherwise the
+ * per-dimension assessment shape is unchanged from v2.0. The aggregator
+ * still accepts v2.0 files for the transition period.
  */
-export const SCHEMA_VERSION   = "2.0";
+export const SCHEMA_VERSION   = "3.0";
 export const HEPTAGON_VERSION = "Hackl2025";
 
 export interface AssessmentCell {
@@ -21,20 +20,18 @@ export interface AssessmentCell {
 }
 
 export interface ExportDocument {
-  schemaVersion: string;   // "2.0"
+  schemaVersion: string;   // "3.0"
   heptagonVersion: string; // "Hackl2025"
-  scope: "individual" | "team";
+  scope: "individual";
   subject: {
     name?: string;
     role?: string;
     productArea?: string;
     team?: string;
-    participantCount?: number;
-    /** Optional LIS role archetype whose target profile applies to this export. */
-    roleArchetype?: RoleKey;
   };
   timestamp: string;
   assessments: Record<string, AssessmentCell>;
+  pilotFeedback: PilotFeedback | null;
   notes: string | null;
 }
 
@@ -43,7 +40,8 @@ export function buildExport(
   subject: Subject,
   profile: Profile,
   evidence: EvidenceMap,
-  subScores: Record<string, number[]>
+  subScores: Record<string, number[]>,
+  pilotFeedback?: PilotFeedback | null
 ): ExportDocument {
   const assessments: Record<string, AssessmentCell> = {};
   for (const d of DIMENSIONS) {
@@ -58,17 +56,16 @@ export function buildExport(
   return {
     schemaVersion: SCHEMA_VERSION,
     heptagonVersion: HEPTAGON_VERSION,
-    scope: subject.scope,
+    scope: "individual",
     subject: {
       name: subject.name,
       role: subject.role,
       productArea: subject.productArea,
-      team: subject.team,
-      participantCount: subject.participantCount,
-      roleArchetype: subject.roleArchetype
+      team: subject.team
     },
     timestamp: new Date().toISOString(),
     assessments,
+    pilotFeedback: pilotFeedback ?? null,
     notes: null
   };
 }
@@ -79,10 +76,8 @@ function sanitize(s: string | undefined): string {
 
 export function exportFilename(subject: Subject, when = new Date()): string {
   const stamp = when.toISOString().slice(0, 10); // YYYY-MM-DD
-  const who = subject.scope === "team"
-    ? sanitize(subject.name ?? subject.team ?? "team")
-    : sanitize(subject.name ?? "individual");
-  return `heptagon-${subject.scope}-${who}-${stamp}.json`;
+  const who = sanitize(subject.name ?? "individual");
+  return `heptagon-individual-${who}-${stamp}.json`;
 }
 
 export function downloadJson(doc: ExportDocument, filename: string): void {

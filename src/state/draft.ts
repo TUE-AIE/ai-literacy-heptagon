@@ -1,18 +1,17 @@
 import { AssessmentDraft } from "./types";
 
 /**
- * Draft is keyed by schema version so a v1 → v2 upgrade naturally discards
- * old drafts (rather than trying to migrate incomplete answers). v1 drafts
- * remain under their own key and simply orphan.
+ * Draft is keyed by schema version so a v2 → v3 upgrade naturally discards
+ * old drafts (rather than trying to migrate incomplete answers).
  */
-const KEY = "ailh.draft.v2";
+const KEY = "ailh.draft.v3";
 
 export function loadDraft(): AssessmentDraft | null {
   try {
     const raw = window.localStorage.getItem(KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as AssessmentDraft;
-    if (!parsed || typeof parsed !== "object" || parsed.version !== "2.0" || !parsed.subject) {
+    if (!parsed || typeof parsed !== "object" || parsed.version !== "3.0" || !parsed.subject) {
       return null;
     }
     return parsed;
