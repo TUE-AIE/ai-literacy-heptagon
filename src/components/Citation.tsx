@@ -3,7 +3,7 @@ import { useTranslation, Trans } from "react-i18next";
 const ARXIV_URL = "https://arxiv.org/abs/2509.18900";
 
 /**
- * Prominent attribution for the Hackl/Müller/Sailer 2025 paper on which
+ * Prominent attribution for the Hackl/Müller/Sailer 2026 paper on which
  * this instrument is based. Designed to read as a bibliographic citation
  * in keeping with the Editorial Diagram aesthetic — full-width band with
  * double hairline rules, set in serif with a mono label.

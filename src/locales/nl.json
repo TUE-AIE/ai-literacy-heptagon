@@ -54,7 +54,7 @@
   },
   "citation": {
     "label": "Gebaseerd op",
-    "body": "<strong>Hackl, V., Müller, A. E., & Sailer, M.</strong> (2025). <em>The AI Literacy Heptagon: A Structured Approach to AI Literacy in Higher Education.</em>",
+    "body": "<strong>Hackl, V., Müller, A. E., & Sailer, M.</strong> (2026). <em>The AI Literacy Heptagon: A Structured Approach to AI Literacy in Higher Education.</em>",
     "venue": "arXiv-preprint 2509.18900 [cs.CY], University of Passau.",
     "linkLabel": "Lees het paper (arXiv)",
     "note": "De zeven dimensies en vier Bloom-georiënteerde niveaus komen rechtstreeks uit het Heptagon-framework in het paper. De 28 deelvragen zijn opgesteld door het AI Literacy Team van TU/e LIS."
@@ -206,7 +206,7 @@
       "short": "Juridisch",
       "full": "Juridische en regelgevende kennis",
       "purpose": "Veilig en conform AI-gebruik in onderwijs- en onderzoeksondersteuning.",
-      "description": "Dit omvat begrip van zowel AI-specifieke wetgeving (zoals de EU AI Act) als technologie-neutrale kaders (zoals de AVG en auteursrecht). Essentieel om juridische verantwoordelijkheden te navigeren en ervoor te zorgen dat ontwikkeling en gebruik van AI in overeenstemming blijven met evoluerende regionale en mondiale regelgeving."
+      "description": "Dit omvat begrip van zowel AI-specifieke wetgeving (zoals de EU AI Act) als technologie-neutrale kaders (zoals de AVG en auteursrecht). Essentieel om juridische verantwoordelijkheden te navigeren en ervoor te zorgen dat ontwikkeling en gebruik van AI in overeenstemming blijven met evoluerende regionale en mondiale regelgeving. Concrete risico's zijn bijvoorbeeld het blootstellen van persoonsgegevens — een AVG-inbreuk, met gevolgen voor de betrokkenen en voor de TU/e — of het delen van vertrouwelijke TU/e-informatie via een externe AI-tool."
     },
     "socialImpact": {
       "short": "Maatschappelijk",
@@ -341,7 +341,7 @@
       "anchors": {
         "unaware":      "Ik overweeg integratie niet",
         "beginner":     "Ik gebruik AI-tools apart",
-        "intermediate": "Ik bed AI in in workflows",
+        "intermediate": "Ik bed AI in in workflows, of ben daarmee bezig",
         "expert":       "Ik herontwerp workflows rond mens–AI-samenwerking"
       }
     },
@@ -376,7 +376,7 @@
       "prompt": "Hoe bekend ben je met AI-relevante juridische kaders (bv. AVG, auteursrecht, EU AI Act)?",
       "anchors": {
         "unaware":      "Ik ben er niet mee bekend",
-        "beginner":     "Ik weet dat ze bestaan",
+        "beginner":     "Ik weet dat ze bestaan en ken de inhoud globaal",
         "intermediate": "Ik pas ze toe in concrete gevallen",
         "expert":       "Ik interpreteer en verklaar de juridische implicaties"
       }

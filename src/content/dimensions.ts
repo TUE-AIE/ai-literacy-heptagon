@@ -2,7 +2,7 @@
  * The seven dimensions of the AI Literacy Heptagon.
  * Order matters — it fixes the axis sequence of the heptagon (starting at the
  * top vertex, going clockwise). This matches the ordering in Figure 3 of
- * Hackl, Müller, Sailer (2025).
+ * Hackl, Müller, Sailer (2026).
  *
  * Display strings (short label, full name, Bloom anchors per level) are not
  * in this file — they live in the i18n locale bundles so the content pass

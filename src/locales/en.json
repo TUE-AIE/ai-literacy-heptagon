@@ -54,7 +54,7 @@
   },
   "citation": {
     "label": "Based on",
-    "body": "<strong>Hackl, V., Müller, A. E., & Sailer, M.</strong> (2025). <em>The AI Literacy Heptagon: A Structured Approach to AI Literacy in Higher Education.</em>",
+    "body": "<strong>Hackl, V., Müller, A. E., & Sailer, M.</strong> (2026). <em>The AI Literacy Heptagon: A Structured Approach to AI Literacy in Higher Education.</em>",
     "venue": "arXiv preprint 2509.18900 [cs.CY], University of Passau.",
     "linkLabel": "Read the paper (arXiv)",
     "note": "The seven dimensions and four Bloom-aligned levels are adopted directly from the paper's Heptagon framework. The 28 sub-questions were authored by the TU/e LIS AI Literacy Team."
@@ -206,7 +206,7 @@
       "short": "Legal",
       "full": "Legal and Regulatory Knowledge",
       "purpose": "Safe, compliant AI use in education and research support.",
-      "description": "This involves understanding both AI-specific legislation (like the EU AI Act) and technology-neutral frameworks (like GDPR and copyright). It is vital for navigating legal responsibilities and ensuring that the development and use of AI remain compliant with evolving regional and global regulations."
+      "description": "This involves understanding both AI-specific legislation (like the EU AI Act) and technology-neutral frameworks (like GDPR and copyright). It is vital for navigating legal responsibilities and ensuring that the development and use of AI remain compliant with evolving regional and global regulations. Concrete risks include exposing personal data — a GDPR breach, with consequences for the people involved and for TU/e — or sharing confidential TU/e information through an external AI tool."
     },
     "socialImpact": {
       "short": "Social Impact",
@@ -341,7 +341,7 @@
       "anchors": {
         "unaware":      "I don't consider integration",
         "beginner":     "I use AI tools separately",
-        "intermediate": "I embed AI into workflows",
+        "intermediate": "I embed AI into workflows, or am in the process of doing so",
         "expert":       "I redesign workflows around human–AI collaboration"
       }
     },
@@ -376,7 +376,7 @@
       "prompt": "How familiar are you with AI-relevant legal frameworks (e.g. GDPR, copyright, EU AI Act)?",
       "anchors": {
         "unaware":      "I am not familiar at all",
-        "beginner":     "I know they exist",
+        "beginner":     "I know they exist and know their content in general",
         "intermediate": "I apply them in concrete cases",
         "expert":       "I interpret and explain legal implications"
       }

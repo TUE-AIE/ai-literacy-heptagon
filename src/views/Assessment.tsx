@@ -34,6 +34,11 @@ export function Assessment({
   const currentSubs = subScores[dim.code] ?? new Array(SUBS_PER_DIM).fill(undefined) as (number | undefined)[];
   const currentEvidence = evidence[dim.code] ?? "";
 
+  // Each dimension is its own page. Reset scroll to the top when the section
+  // changes so people land on the heading, not where the previous Next button
+  // sat (App's scroll-reset only fires on view.kind, not on index changes).
+  useEffect(() => { window.scrollTo({ top: 0 }); }, [index]);
+
   // Keyboard: left/right arrows navigate between dimensions.
   // (Per-question keyboard answer removed — with 4 questions per page, digit
   // shortcuts are ambiguous.)
